@@ -2,7 +2,13 @@
 
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { FiMenu, FiX, FiArrowUpRight } from "react-icons/fi";
+import {
+  FiX,
+  FiArrowUpRight,
+  FiCalendar,
+  FiClock,
+  FiMapPin,
+} from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { eventInfo } from "@/data/dummy";
 
@@ -14,6 +20,44 @@ const NAV_LINKS = [
   { href: "#sponsor", label: "Sponsor" },
   { href: "#faq", label: "FAQ" },
 ];
+
+const menuContainer = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.055, delayChildren: 0.18 },
+  },
+};
+
+const menuItem = {
+  hidden: { opacity: 0, x: 28 },
+  show: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.4, ease: [0.22, 1, 0.36, 1] },
+  },
+};
+
+function MenuIcon({ open }) {
+  return (
+    <span className="relative block h-4 w-5">
+      <motion.span
+        className="absolute left-0 top-0 h-[2px] w-5 rounded-full bg-current"
+        animate={open ? { rotate: 45, y: 7 } : { rotate: 0, y: 0 }}
+        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+      />
+      <motion.span
+        className="absolute left-0 top-[7px] h-[2px] w-5 rounded-full bg-current"
+        animate={open ? { opacity: 0, x: -6 } : { opacity: 1, x: 0 }}
+        transition={{ duration: 0.15 }}
+      />
+      <motion.span
+        className="absolute left-0 top-[14px] h-[2px] w-5 rounded-full bg-current"
+        animate={open ? { rotate: -45, y: -7 } : { rotate: 0, y: 0 }}
+        transition={{ duration: 0.25, ease: [0.22, 1, 0.36, 1] }}
+      />
+    </span>
+  );
+}
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -31,6 +75,14 @@ export function Navbar() {
     return () => {
       document.body.style.overflow = "";
     };
+  }, [open]);
+
+  // Tutup drawer dengan tombol Escape
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (e) => e.key === "Escape" && setOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
   }, [open]);
 
   return (
@@ -56,7 +108,11 @@ export function Navbar() {
           >
             GC
           </span>
-          <span className={`font-display text-sm font-bold leading-tight ${scrolled ? "text-cream-50" : "text-cream-100"}`}>
+          <span
+            className={`font-display text-sm font-bold leading-tight ${
+              scrolled ? "text-cream-50" : "text-cream-100"
+            }`}
+          >
             {eventInfo.name}
             <span className="block font-mono text-[10px] font-medium tracking-wide opacity-60">
               {eventInfo.edition} · {eventInfo.year}
@@ -86,15 +142,20 @@ export function Navbar() {
           </Button>
         </div>
 
-        <button
-          aria-label="Buka menu"
-          onClick={() => setOpen(true)}
-          className={`flex h-10 w-10 items-center justify-center rounded-full lg:hidden ${
-            scrolled ? "text-cream-50" : "text-cream-100"
+        <motion.button
+          aria-label={open ? "Tutup menu" : "Buka menu"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen((v) => !v)}
+          whileTap={{ scale: 0.9 }}
+          className={`flex h-10 w-10 items-center justify-center rounded-full border transition-colors lg:hidden ${
+            scrolled
+              ? "border-cream-50/15 bg-cream-50/5 text-cream-50"
+              : "border-cream-100/20 bg-cream-100/5 text-cream-100"
           }`}
         >
-          <FiMenu className="h-6 w-6" />
-        </button>
+          <MenuIcon open={open} />
+        </motion.button>
       </div>
 
       <AnimatePresence>
@@ -103,44 +164,102 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-ink-950/60 backdrop-blur-sm lg:hidden"
+            transition={{ duration: 0.25 }}
+            className="fixed inset-0 z-50 bg-ink-950/70 backdrop-blur-sm lg:hidden"
             onClick={() => setOpen(false)}
           >
             <motion.div
+              id="mobile-menu"
+              role="dialog"
+              aria-modal="true"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
-              transition={{ type: "spring", damping: 28, stiffness: 260 }}
+              transition={{ type: "spring", damping: 30, stiffness: 280 }}
               onClick={(e) => e.stopPropagation()}
-              className="ml-auto flex h-full w-[82%] max-w-xs flex-col bg-cream-50 p-6"
+              className="relative ml-auto flex h-full w-[86%] max-w-xs flex-col overflow-hidden bg-cream-50"
             >
-              <div className="mb-10 flex items-center justify-between">
-                <span className="font-display text-sm font-bold text-ink-900">Menu</span>
-                <button
-                  aria-label="Tutup menu"
-                  onClick={() => setOpen(false)}
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-ink-900/5 text-ink-900"
-                >
-                  <FiX className="h-5 w-5" />
-                </button>
-              </div>
-              <nav className="flex flex-1 flex-col gap-1">
-                {NAV_LINKS.map((link) => (
-                  <a
-                    key={link.href}
-                    href={link.href}
+              {/* Texture & decorative glow — konsisten sama aesthetic Hero */}
+              <div className="grain-overlay pointer-events-none absolute inset-0 opacity-[0.05]" />
+              <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-clay-500/15 blur-[90px]" />
+
+              <div className="relative flex h-full flex-col p-6">
+                {/* Header */}
+                <div className="mb-8 flex items-center justify-between">
+                  <div className="flex items-center gap-2.5">
+                    <span className="clay-stamp h-10 w-10 border-2 border-ink-900 bg-ink-900 font-display text-sm font-bold text-cream-50">
+                      GC
+                    </span>
+                    <span className="font-display text-sm font-bold leading-tight text-ink-900">
+                      {eventInfo.name}
+                      <span className="block font-mono text-[10px] font-medium tracking-wide text-ink-900/50">
+                        {eventInfo.edition} · {eventInfo.year}
+                      </span>
+                    </span>
+                  </div>
+                  <motion.button
+                    aria-label="Tutup menu"
                     onClick={() => setOpen(false)}
-                    className="border-b border-ink-900/10 py-4 font-display text-lg font-semibold text-ink-900"
+                    whileHover={{ rotate: 90 }}
+                    whileTap={{ scale: 0.9 }}
+                    transition={{ duration: 0.2 }}
+                    className="flex h-10 w-10 items-center justify-center rounded-full bg-ink-900/5 text-ink-900"
                   >
-                    {link.label}
+                    <FiX className="h-5 w-5" />
+                  </motion.button>
+                </div>
+
+                <p className="section-heading-eyebrow terminal-caret mb-4 text-[11px] text-clay-500">
+                  $ menu --navigasi
+                </p>
+
+                {/* Nav links */}
+                <motion.nav
+                  variants={menuContainer}
+                  initial="hidden"
+                  animate="show"
+                  className="flex flex-1 flex-col"
+                >
+                  {NAV_LINKS.map((link, i) => (
+                    <motion.a
+                      key={link.href}
+                      variants={menuItem}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className="group flex items-center justify-between border-b border-ink-900/10 py-4"
+                    >
+                      <span className="flex items-baseline gap-3">
+                        <span className="font-mono text-xs text-clay-500">
+                          {String(i + 1).padStart(2, "0")}
+                        </span>
+                        <span className="font-display text-lg font-semibold text-ink-900 transition-colors group-hover:text-clay-500">
+                          {link.label}
+                        </span>
+                      </span>
+                      <FiArrowUpRight className="h-4 w-4 -translate-x-1 text-ink-900/30 opacity-0 transition-all duration-200 group-hover:translate-x-0 group-hover:text-clay-500 group-hover:opacity-100" />
+                    </motion.a>
+                  ))}
+                </motion.nav>
+
+                {/* Info cepat acara */}
+                <div className="mb-5 space-y-2 border-t border-dashed border-ink-900/15 pt-5 font-body text-xs text-ink-900/60">
+                  <span className="flex items-center gap-2">
+                    <FiCalendar className="text-clay-500" /> {eventInfo.date}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <FiClock className="text-clay-500" /> {eventInfo.time}
+                  </span>
+                  <span className="flex items-center gap-2">
+                    <FiMapPin className="text-clay-500" /> {eventInfo.location}
+                  </span>
+                </div>
+
+                <Button asChild className="w-full">
+                  <a href="#daftar" onClick={() => setOpen(false)}>
+                    Daftar sekarang <FiArrowUpRight />
                   </a>
-                ))}
-              </nav>
-              <Button asChild className="w-full">
-                <a href="#daftar" onClick={() => setOpen(false)}>
-                  Daftar sekarang <FiArrowUpRight />
-                </a>
-              </Button>
+                </Button>
+              </div>
             </motion.div>
           </motion.div>
         )}

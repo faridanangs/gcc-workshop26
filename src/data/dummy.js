@@ -47,6 +47,11 @@ export const galleryPhotos = [
     src: "/images/peserta8.webp",
     caption: "GCC 2022 — Antusiasme peserta",
   },
+  {
+    id: "p7",
+    src: "/images/peserta8.webp",
+    caption: "GCC 2022 — Antusiasme peserta",
+  },
 ];
 
 export const galleryVideos = [

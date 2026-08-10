@@ -64,27 +64,6 @@ export function Sponsors() {
             </div>
           </div>
 
-          <div>
-            <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-wide text-ink-900/50">
-              Silver Partner
-            </p>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {sponsors.silver.map((s) => (
-                <SponsorCard key={s.name} name={s.name} size="sm" />
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-wide text-ink-900/50">
-              Community Partner
-            </p>
-            <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-              {sponsors.community.map((s) => (
-                <SponsorCard key={s.name} name={s.name} size="sm" />
-              ))}
-            </div>
-          </div>
         </div>
       </div>
     </section>

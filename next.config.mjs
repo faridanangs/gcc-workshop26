@@ -8,6 +8,11 @@ const nextConfig = {
       { protocol: "https", hostname: "i.pravatar.cc" },
     ],
   },
+  turbopack: {
+    resolveAlias: {
+      "tw-animate-css": "./node_modules/tw-animate-css/dist/tw-animate.css",
+    },
+  },
 };
 
 export default nextConfig;
