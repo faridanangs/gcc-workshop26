@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { FiLinkedin, FiInstagram } from "react-icons/fi";
 import { mentors } from "@/data/dummy";
 
@@ -28,11 +29,13 @@ export function Mentors() {
               className="group text-center"
             >
               <div className="relative mx-auto aspect-square w-full max-w-[140px] overflow-hidden rounded-2xl border-2 border-ink-900/8 bg-cream-50">
-                <img
+                <Image
                   src={mentor.photo}
                   alt={mentor.name}
+                  fill
                   loading="lazy"
-                  className="h-full w-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
+                  sizes="140px"
+                  className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
                 />
                 <div className="absolute inset-x-0 bottom-0 flex justify-center gap-2 bg-gradient-to-t from-ink-950/80 to-transparent py-2.5 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                   <FiLinkedin className="h-3.5 w-3.5 text-cream-50" />

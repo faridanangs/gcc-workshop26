@@ -44,7 +44,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="id" className={`${unbounded.variable} ${jakarta.variable} ${jbmono.variable}`}>
-      <body className="antialiased">
+      <body className="antialiased" suppressHydrationWarning>
         {children}
         <Toaster />
       </body>

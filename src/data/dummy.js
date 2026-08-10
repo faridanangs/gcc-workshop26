@@ -19,42 +19,32 @@ export const stats = [
 export const galleryPhotos = [
   {
     id: "p1",
-    src: "./images/peserta1.JPG",
-    caption: "GCC 2025 — Sesi hands-on coding bareng mentor",
-  },
-  {
-    id: "p2",
-    src: "./images/peserta2.JPG",
-    caption: "GCC 2025 — Keynote pembukaan",
-  },
-  {
-    id: "p3",
-    src: "./images/peserta3.JPG",
+    src: "/images/peserta3.webp",
     caption: "GCC 2024 — Sesi kerja kelompok",
   },
   {
-    id: "p4",
-    src: "./images/peserta4.JPG",
+    id: "p2",
+    src: "/images/peserta4.webp",
     caption: "GCC 2024 — Networking session",
   },
   {
-    id: "p5",
-    src: "./images/peserta5.JPG",
+    id: "p3",
+    src: "/images/peserta5.webp",
     caption: "GCC 2023 — Demo day peserta",
   },
   {
-    id: "p6",
-    src: "./images/peserta6.JPG",
+    id: "p4",
+    src: "/images/peserta6.webp",
     caption: "GCC 2023 — Foto bersama penutupan",
   },
   {
-    id: "p7",
-    src: "./images/peserta7.JPG",
+    id: "p5",
+    src: "/images/peserta7.webp",
     caption: "GCC 2022 — Sesi tanya jawab",
   },
   {
-    id: "p8",
-    src: "./images/peserta8.JPG",
+    id: "p6",
+    src: "/images/peserta8.webp",
     caption: "GCC 2022 — Antusiasme peserta",
   },
 ];
@@ -62,38 +52,27 @@ export const galleryPhotos = [
 export const galleryVideos = [
   {
     id: "v1",
+    thumbnail: "https://picsum.photos/seed/gcc-video-1/900/600",
     title: "Recap GCC 2025",
-    src: "./videos/workshop1.MOV"
+    src: "https://res.cloudinary.com/detetmaw8/video/upload/f_auto,q_auto/v1786348929/workshop6_ix02q9.mp4",
   },
   {
     id: "v2",
+    thumbnail: "https://picsum.photos/seed/gcc-video-2/900/600",
     title: "Cuplikan Workshop — Track Web Dev",
-    src: "./videos/workshop2.MOV"
-  },
-  {
-    id: "v3",
-    title: "Testimoni Peserta GCC 2024",
-    src: "./videos/workshop3.MOV"
-  },
-  {
-    id: "v4",
-    title: "Testimoni Peserta GCC 2024",
-    src: "./videos/workshop4.MOV"
-  },
-  {
-    id: "v5",
-    title: "Testimoni Peserta GCC 2024",
-    src: "./videos/workshop5.MOV"
+    src: "https://res.cloudinary.com/detetmaw8/video/upload/f_auto,q_auto/v1786348929/workshop2_ri1tnw.mp4",
   },
   {
     id: "v6",
+    thumbnail: "https://picsum.photos/seed/gcc-video-3/900/600",
     title: "Testimoni Peserta GCC 2024",
-    src: "./videos/workshop6.MOV"
+    src: "https://res.cloudinary.com/detetmaw8/video/upload/f_auto,q_auto/v1786348929/workshop7_u3usjh.mp4",
   },
   {
     id: "v7",
+    thumbnail: "https://picsum.photos/seed/gcc-video-4/900/600",
     title: "Testimoni Peserta GCC 2024",
-    src: "./videos/workshop7.MOV"
+    src: "https://res.cloudinary.com/detetmaw8/video/upload/f_auto,q_auto/v1786348929/workshop1_lsv3rq.mp4",
   },
 ];
 
@@ -177,10 +156,7 @@ export const mentors = [
 ];
 
 export const sponsors = {
-  platinum: [
-    { name: "Nusantara Cloud" },
-    { name: "Awan Digital" },
-  ],
+  platinum: [{ name: "Nusantara Cloud" }, { name: "Awan Digital" }],
   gold: [
     { name: "Kopi & Koding" },
     { name: "DevHive Studio" },

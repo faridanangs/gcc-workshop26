@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { FiCalendar, FiClock, FiMapPin, FiArrowUpRight, FiPlay } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { eventInfo, galleryPhotos, stats } from "@/data/dummy";
@@ -10,7 +11,7 @@ const fadeUp = {
   show: (i = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: 0.08 * i, duration: 0.6, ease: [0.22, 1, 0.36, 1] },
+    transition: { delay: 0.08 * i, duration: 0.01, ease: [0.22, 1, 0.36, 1] },
   }),
 };
 
@@ -20,7 +21,6 @@ export function Hero() {
       id="top"
       className="relative overflow-hidden bg-ink-900 pb-24 pt-32 text-cream-50 sm:pt-40 lg:pb-32"
     >
-      {/* Ambient terracotta blobs */}
       <div className="pointer-events-none absolute -left-32 -top-32 h-[420px] w-[420px] rounded-full bg-clay-500/30 blur-[110px]" />
       <div className="pointer-events-none absolute -right-24 top-40 h-[380px] w-[380px] rounded-full bg-amber-500/20 blur-[110px]" />
       <div className="grain-overlay pointer-events-none absolute inset-0 opacity-[0.06]" />
@@ -123,24 +123,33 @@ export function Hero() {
           className="relative mx-auto hidden aspect-square w-full max-w-md sm:block"
         >
           <div className="absolute right-6 top-2 h-56 w-44 rotate-6 overflow-hidden rounded-2xl border-4 border-cream-50/10 shadow-2xl">
-            <img
+            <Image
               src={galleryPhotos[1].src}
               alt={galleryPhotos[1].caption}
-              className="h-full w-full object-cover"
+              fill
+              priority
+              sizes="176px"
+              className="object-cover"
             />
           </div>
           <div className="absolute left-0 top-24 h-52 w-40 -rotate-6 overflow-hidden rounded-2xl border-4 border-cream-50/10 shadow-2xl">
-            <img
+            <Image
               src={galleryPhotos[0].src}
               alt={galleryPhotos[0].caption}
-              className="h-full w-full object-cover"
+              fill
+              priority
+              sizes="160px"
+              className="object-cover"
             />
           </div>
           <div className="absolute bottom-2 left-20 h-48 w-40 rotate-3 overflow-hidden rounded-2xl border-4 border-cream-50/10 shadow-2xl">
-            <img
+            <Image
               src={galleryPhotos[3].src}
               alt={galleryPhotos[3].caption}
-              className="h-full w-full object-cover"
+              fill
+              priority
+              sizes="160px"
+              className="object-cover"
             />
           </div>
 
@@ -164,7 +173,6 @@ export function Hero() {
         </motion.div>
       </div>
 
-      {/* Stats bar */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}

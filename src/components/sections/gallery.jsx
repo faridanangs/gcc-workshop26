@@ -6,7 +6,7 @@ import { FiPlay, FiZoomIn } from "react-icons/fi";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { galleryPhotos, galleryVideos } from "@/data/dummy";
-import { VideoThumbnail } from "../video-tumbnail";
+import Image from "next/image";
 
 export function Gallery() {
   const [activeVideo, setActiveVideo] = useState(null);
@@ -43,10 +43,13 @@ export function Gallery() {
                       transition={{ duration: 0.4, delay: (i % 6) * 0.05 }}
                       className="group relative block w-full overflow-hidden rounded-2xl border-2 border-ink-900/8"
                     >
-                      <img
+                      <Image
                         src={photo.src}
                         alt={photo.caption}
+                        width={500}
+                        height={650}
                         loading="lazy"
+                        sizes="(max-width: 640px) 50vw, 33vw"
                         className="w-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 flex items-end bg-gradient-to-t from-ink-950/70 via-ink-950/0 to-ink-950/0 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
@@ -60,9 +63,11 @@ export function Gallery() {
                     </motion.button>
                   </DialogTrigger>
                   <DialogContent>
-                    <img
+                    <Image
                       src={photo.src}
                       alt={photo.caption}
+                      width={900}
+                      height={1200}
                       className="max-h-[75vh] w-full rounded-xl object-contain"
                     />
                     <p className="px-3 py-3 text-center text-sm font-medium text-ink-900/70">
@@ -89,10 +94,13 @@ export function Gallery() {
                       transition={{ duration: 0.4, delay: i * 0.08 }}
                       className="group relative block aspect-video w-full overflow-hidden rounded-2xl border-2 border-ink-900/8"
                     >
-                      <VideoThumbnail
-                        src={video.src}
+                      <Image
+                        src={video.thumbnail}
                         alt={video.title}
-                        className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-110"
+                        fill
+                        loading="lazy"
+                        sizes="(max-width: 640px) 100vw, 50vw"
+                        className="object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 bg-ink-950/35 transition-colors group-hover:bg-ink-950/50" />
                       <span className="absolute inset-0 flex items-center justify-center">
@@ -109,8 +117,10 @@ export function Gallery() {
                     {activeVideo === video.id && (
                       <video
                         src={video.src}
+                        poster={video.thumbnail}
                         controls
                         autoPlay
+                        preload="none"
                         className="w-full rounded-2xl"
                       />
                     )}
