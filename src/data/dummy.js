@@ -19,42 +19,42 @@ export const stats = [
 export const galleryPhotos = [
   {
     id: "p1",
-    src: "./images/peserta1.jpg",
+    src: "./images/peserta1.JPG",
     caption: "GCC 2025 — Sesi hands-on coding bareng mentor",
   },
   {
     id: "p2",
-    src: "./images/peserta2.jpg",
+    src: "./images/peserta2.JPG",
     caption: "GCC 2025 — Keynote pembukaan",
   },
   {
     id: "p3",
-    src: "./images/peserta3.jpg",
+    src: "./images/peserta3.JPG",
     caption: "GCC 2024 — Sesi kerja kelompok",
   },
   {
     id: "p4",
-    src: "./images/peserta4.jpg",
+    src: "./images/peserta4.JPG",
     caption: "GCC 2024 — Networking session",
   },
   {
     id: "p5",
-    src: "./images/peserta5.jpg",
+    src: "./images/peserta5.JPG",
     caption: "GCC 2023 — Demo day peserta",
   },
   {
     id: "p6",
-    src: "./images/peserta6.jpg",
+    src: "./images/peserta6.JPG",
     caption: "GCC 2023 — Foto bersama penutupan",
   },
   {
     id: "p7",
-    src: "./images/peserta7.jpg",
+    src: "./images/peserta7.JPG",
     caption: "GCC 2022 — Sesi tanya jawab",
   },
   {
     id: "p8",
-    src: "./images/peserta8.jpg",
+    src: "./images/peserta8.JPG",
     caption: "GCC 2022 — Antusiasme peserta",
   },
 ];
@@ -63,37 +63,37 @@ export const galleryVideos = [
   {
     id: "v1",
     title: "Recap GCC 2025",
-    src: "./videos/workshop1.mov"
+    src: "./videos/workshop1.MOV"
   },
   {
     id: "v2",
     title: "Cuplikan Workshop — Track Web Dev",
-    src: "./videos/workshop2.mov"
+    src: "./videos/workshop2.MOV"
   },
   {
     id: "v3",
     title: "Testimoni Peserta GCC 2024",
-    src: "./videos/workshop3.mov"
+    src: "./videos/workshop3.MOV"
   },
   {
     id: "v4",
     title: "Testimoni Peserta GCC 2024",
-    src: "./videos/workshop4.mov"
+    src: "./videos/workshop4.MOV"
   },
   {
     id: "v5",
     title: "Testimoni Peserta GCC 2024",
-    src: "./videos/workshop5.mov"
+    src: "./videos/workshop5.MOV"
   },
   {
     id: "v6",
     title: "Testimoni Peserta GCC 2024",
-    src: "./videos/workshop6.mov"
+    src: "./videos/workshop6.MOV"
   },
   {
     id: "v7",
     title: "Testimoni Peserta GCC 2024",
-    src: "./videos/workshop7.mov"
+    src: "./videos/workshop7.MOV"
   },
 ];
 
