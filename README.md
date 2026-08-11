@@ -43,7 +43,7 @@ src/
     sections/           -> Navbar, Hero, About, Agenda, Gallery, Mentors,
                            Testimonials, Sponsors, RegistrationForm, FAQ, Footer, MobileCta
   data/
-    dummy.js            -> SEMUA data dummy (foto, video, mentor, sponsor, FAQ, agenda)
+    dummy.js            -> SEMUA data dummy (foto, video, pemateri, sponsor, FAQ, agenda)
 ```
 
 ## Mengganti data dummy dengan data asli
@@ -55,7 +55,7 @@ Semua konten placeholder ada di satu file: **`src/data/dummy.js`**. Cukup edit f
 - `galleryPhotos` / `galleryVideos` — ganti `src` dengan URL foto/video asli (atau taruh file di folder `public/` lalu pakai path lokal, mis. `/images/foto1.jpg`)
 - `agenda` — rundown acara
 - `tracks` — pilihan kelas/track di form pendaftaran
-- `mentors` — daftar mentor & foto
+- `mentors` — daftar pemateri & foto
 - `sponsors` — daftar sponsor per tier (Platinum/Gold/Silver/Community). Saat ini ditampilkan sebagai kartu nama (bukan logo gambar) — kalau ada logo asli, komponen `SponsorCard` di `src/components/sections/sponsors.jsx` bisa diubah untuk menampilkan `<img>` logo.
 - `testimonials`, `faqs` — testimoni & pertanyaan umum
 

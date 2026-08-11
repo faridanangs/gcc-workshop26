@@ -7,12 +7,12 @@ const points = [
   {
     icon: FiCode,
     title: "Praktik, bukan cuma slide",
-    desc: "70% waktu workshop dipakai untuk membangun project nyata langsung di laptop kamu, ditemani mentor sepanjang sesi.",
+    desc: "70% waktu workshop dipakai untuk membangun project nyata langsung di laptop kamu, ditemani pemateri sepanjang sesi.",
   },
   {
     icon: FiUsers,
     title: "Kelas kecil, bimbingan dekat",
-    desc: "Tiap track dibatasi jumlah pesertanya supaya mentor bisa benar-benar kenal progres dan kendala masing-masing peserta.",
+    desc: "Tiap track dibatasi jumlah pesertanya supaya pemateri bisa benar-benar kenal progres dan kendala masing-masing peserta.",
   },
   {
     icon: FiCoffee,
@@ -22,7 +22,7 @@ const points = [
   {
     icon: FiAward,
     title: "Bekal nyata untuk portofolio",
-    desc: "Pulang bawa project jadi, sertifikat resmi, dan koneksi baru dari sesama peserta maupun mentor industri.",
+    desc: "Pulang bawa project jadi, sertifikat resmi, dan koneksi baru dari sesama peserta maupun pemateri industri.",
   },
 ];
 

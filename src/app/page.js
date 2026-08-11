@@ -3,7 +3,7 @@ import { Hero } from "@/components/sections/hero";
 import { About } from "@/components/sections/about";
 import { Agenda } from "@/components/sections/agenda";
 import { Gallery } from "@/components/sections/gallery";
-import { Mentors } from "@/components/sections/mentors";
+import { Mentors } from "@/components/sections/pemateri";
 import { Testimonials } from "@/components/sections/testimonials";
 import { Sponsors } from "@/components/sections/sponsors";
 import { RegistrationForm } from "@/components/sections/registration-form";

@@ -17,7 +17,7 @@ const NAV_LINKS = [
   { href: "#tentang", label: "Tentang" },
   { href: "#rundown", label: "Rundown" },
   { href: "#galeri", label: "Galeri" },
-  { href: "#mentor", label: "Mentor" },
+  { href: "#pemateri", label: "Pemateri" },
   { href: "#sponsor", label: "Sponsor" },
   { href: "#faq", label: "FAQ" },
 ];

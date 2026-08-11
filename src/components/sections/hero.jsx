@@ -46,7 +46,7 @@ export function Hero() {
             className="section-heading-eyebrow mb-6 inline-flex items-center rounded-full border border-cream-50/15 bg-cream-50/5 px-3 py-2 text-xs"
           >
             <EncryptedText
-              text={`$ growth-coding-community --run ${eventInfo.year}`}
+              text={`$ gamatika-coding-club --run ${eventInfo.year}`}
               encryptedClassName="text-white"
               revealedClassName="dark:text-white  text-amber-400"
               revealDelayMs={100}
@@ -89,7 +89,7 @@ export function Hero() {
             className="mt-6 max-w-lg text-balance font-body text-base leading-relaxed text-cream-100/70 sm:text-lg"
           >
             {eventInfo.edition} workshop tahunan {eventInfo.tagline} — sehari
-            penuh praktik langsung, ditemani mentor industri, dan komunitas yang
+            penuh praktik langsung, ditemani pemateri industri, dan komunitas yang
             bikin belajar terasa seperti ngobrol bareng teman.
           </motion.p>
 

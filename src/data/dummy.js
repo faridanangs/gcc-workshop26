@@ -1,9 +1,9 @@
 export const eventInfo = {
   name: "GCC Workshop",
-  edition: "Edisi ke-X",
+  edition: "Edisi ke-2",
   year: "2026",
-  tagline: "Growth Coding Community",
-  date: "Sabtu, X Oktober 2026",
+  tagline: "Gamatika Coding Club",
+  date: "Sabtu, 24 Oktober 2026",
   time: "08.00 - 17.00 WIB",
   location: "Auditorium Digital Hub, Mars",
   price: "Rp 200.000",
@@ -12,7 +12,7 @@ export const eventInfo = {
 export const stats = [
   { label: "Edisi terselenggara", value: "2", suffix: "x" },
   { label: "Alumni peserta", value: "300", suffix: "+" },
-  { label: "Mentor & pembicara", value: "10", suffix: "+" },
+  { label: "Pemateri & pembicara", value: "10", suffix: "+" },
   { label: "Kepuasan peserta", value: "97", suffix: "%" },
 ];
 
@@ -44,11 +44,6 @@ export const galleryPhotos = [
   },
   {
     id: "p6",
-    src: "/images/peserta8.webp",
-    caption: "GCC 2022 — Antusiasme peserta",
-  },
-  {
-    id: "p7",
     src: "/images/peserta8.webp",
     caption: "GCC 2022 — Antusiasme peserta",
   },
@@ -105,7 +100,7 @@ export const agenda = [
   {
     time: "13.00",
     title: "Sesi Kelas Paralel II",
-    desc: "Lanjutan praktik project mini bersama mentor pendamping.",
+    desc: "Lanjutan praktik project mini bersama pemateri pendamping.",
   },
   {
     time: "15.30",
@@ -211,7 +206,7 @@ export const testimonials = [
 export const faqs = [
   {
     q: "Apakah workshop ini cocok untuk pemula?",
-    a: "Sangat cocok. Setiap track punya kelas dengan level pemula sampai menengah, dan mentor akan mendampingi langsung selama sesi praktik.",
+    a: "Sangat cocok. Setiap track punya kelas dengan level pemula sampai menengah, dan pemateri akan mendampingi langsung selama sesi praktik.",
   },
   {
     q: "Apa saja yang perlu dibawa peserta?",
@@ -227,6 +222,21 @@ export const faqs = [
   },
   {
     q: "Apakah kuota pendaftaran terbatas?",
-    a: "Benar, setiap track hanya dibuka untuk jumlah terbatas agar sesi pendampingan mentor tetap efektif. Daftar lebih awal disarankan.",
+    a: "Benar, setiap track hanya dibuka untuk jumlah terbatas agar sesi pendampingan pemateri tetap efektif. Daftar lebih awal disarankan.",
   },
+];
+
+
+export const speakers = [
+  {
+    name: "Pak Tri",
+    role: "Dosen",
+    institution: "Universitas Mataram (UNRAM)",
+    bio: "Mengajar dan aktif membina mahasiswa di bidang ilmu komputer selama bertahun-tahun, dengan fokus pada pengembangan perangkat lunak dan pembelajaran pemrograman yang aplikatif.",
+    quote: "Belajar itu bukan soal secepat apa kamu paham, tapi seberani apa kamu mulai.",
+    tags: ["Pemrograman Web", "Basis Data", "Rekayasa Perangkat Lunak"],
+    photo: "https://i.pravatar.cc/400?img=68",
+    portfolioUrl: "https://unram.ac.id", // TODO: ganti dengan profil/portofolio asli
+    portfolioLabel: "Portfolio",
+  }
 ];
