@@ -1,5 +1,12 @@
-import { FiInstagram, FiTwitter, FiYoutube, FiMail, FiMapPin } from "react-icons/fi";
+import {
+  FiInstagram,
+  FiTwitter,
+  FiYoutube,
+  FiMail,
+  FiMapPin,
+} from "react-icons/fi";
 import { eventInfo } from "@/data/dummy";
+import Image from "next/image";
 
 export function Footer() {
   return (
@@ -8,8 +15,10 @@ export function Footer() {
         <div className="grid gap-10 border-b border-cream-50/10 pb-12 sm:grid-cols-2 lg:grid-cols-4">
           <div className="sm:col-span-2 lg:col-span-2">
             <div className="flex items-center gap-2.5">
-              <span className="clay-stamp h-10 w-10 border-2 border-clay-500 bg-clay-500 font-display text-sm font-bold text-cream-50">
-                GC
+              <span
+                className={`clay-stamp h-10 w-10 border-2 font-display text-sm font-bold relative border-clay-500 bg-white text-cream-50`}
+              >
+                <Image src="/images/logo.png" alt="Growth Coding Logo" fill />
               </span>
               <span className="font-display text-sm font-bold text-cream-50">
                 {eventInfo.name}
@@ -19,11 +28,11 @@ export function Footer() {
               </span>
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream-100/55">
-              Workshop coding tahunan yang mempertemukan calon developer dengan mentor
-              industri lewat sesi praktik yang hangat dan membumi.
+              Workshop coding tahunan yang mempertemukan calon developer dengan
+              mentor industri lewat sesi praktik yang hangat dan membumi.
             </p>
             <div className="mt-5 flex gap-3">
-              {[FiInstagram, FiTwitter, FiYoutube].map((Icon, i) => (
+              {[FiInstagram, FiYoutube].map((Icon, i) => (
                 <a
                   key={i}
                   href="#"
@@ -41,11 +50,31 @@ export function Footer() {
               Navigasi
             </p>
             <ul className="mt-4 space-y-2.5 text-sm text-cream-100/70">
-              <li><a href="#tentang" className="hover:text-clay-500">Tentang</a></li>
-              <li><a href="#rundown" className="hover:text-clay-500">Rundown</a></li>
-              <li><a href="#galeri" className="hover:text-clay-500">Galeri</a></li>
-              <li><a href="#sponsor" className="hover:text-clay-500">Sponsor</a></li>
-              <li><a href="#daftar" className="hover:text-clay-500">Daftar</a></li>
+              <li>
+                <a href="#tentang" className="hover:text-clay-500">
+                  Tentang
+                </a>
+              </li>
+              <li>
+                <a href="#rundown" className="hover:text-clay-500">
+                  Rundown
+                </a>
+              </li>
+              <li>
+                <a href="#galeri" className="hover:text-clay-500">
+                  Galeri
+                </a>
+              </li>
+              <li>
+                <a href="#sponsor" className="hover:text-clay-500">
+                  Sponsor
+                </a>
+              </li>
+              <li>
+                <a href="#daftar" className="hover:text-clay-500">
+                  Daftar
+                </a>
+              </li>
             </ul>
           </div>
 
@@ -67,7 +96,9 @@ export function Footer() {
         </div>
 
         <div className="flex flex-col items-center justify-between gap-3 pt-6 text-xs text-cream-100/40 sm:flex-row">
-          <p>© {eventInfo.year} {eventInfo.name}. Seluruh hak cipta dilindungi.</p>
+          <p>
+            © {eventInfo.year} {eventInfo.name}. Seluruh hak cipta dilindungi.
+          </p>
           <p className="font-mono">dibuat dengan hangat oleh panitia GCC</p>
         </div>
       </div>

@@ -11,6 +11,7 @@ import {
 } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { eventInfo } from "@/data/dummy";
+import Image from "next/image";
 
 const NAV_LINKS = [
   { href: "#tentang", label: "Tentang" },
@@ -100,13 +101,13 @@ export function Navbar() {
       >
         <a href="#top" className="flex items-center gap-2.5">
           <span
-            className={`clay-stamp h-10 w-10 border-2 font-display text-sm font-bold ${
+            className={`clay-stamp h-10 w-10 border-2 font-display text-sm font-bold relative ${
               scrolled
-                ? "border-clay-500 bg-clay-500 text-cream-50"
-                : "border-ink-900 bg-ink-900 text-cream-50"
+                ? "border-clay-500 bg-white text-cream-50"
+                : "border-ink-900 bg-white text-cream-50"
             }`}
           >
-            GC
+            <Image src="/images/logo.png" alt="Growth Coding Logo" fill />
           </span>
           <span
             className={`font-display text-sm font-bold leading-tight ${
@@ -187,9 +188,11 @@ export function Navbar() {
                 {/* Header */}
                 <div className="mb-8 flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                    <span className="clay-stamp h-10 w-10 border-2 border-ink-900 bg-ink-900 font-display text-sm font-bold text-cream-50">
-                      GC
-                    </span>
+                           <span
+            className={`clay-stamp h-10 w-10 border-2 font-display text-sm font-bold relative ${ "border-ink-900 bg-white text-cream-50"}`}
+          >
+            <Image src="/images/logo.png" alt="Growth Coding Logo" fill />
+          </span>
                     <span className="font-display text-sm font-bold leading-tight text-ink-900">
                       {eventInfo.name}
                       <span className="block font-mono text-[10px] font-medium tracking-wide text-ink-900/50">

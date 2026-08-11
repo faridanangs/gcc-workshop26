@@ -29,7 +29,7 @@ export function Hero() {
   return (
     <section
       id="top"
-      className="relative overflow-hidden bg-ink-900 pb-10 pt-32 text-cream-50 sm:pt-40 lg:pb-10"
+      className="relative overflow-hidden bg-ink-900 pb-16 pt-32 text-cream-50 sm:pt-40 lg:pb-10"
     >
       <BackgroundBeams />
       <div className="pointer-events-none absolute -left-32 -top-32 h-[420px] w-[420px] rounded-full bg-clay-500/30 blur-[110px]" />
