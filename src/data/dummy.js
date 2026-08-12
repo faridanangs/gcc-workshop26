@@ -9,7 +9,7 @@ export const eventInfo = {
   date: "Sabtu, 24 Oktober 2026",
   time: "08.00 - 13.05 WITA",
   location: "Aula MIPA, Universitas Mataram",
-  price: "Rp 200.000",
+  price: "Rp XX.000",
 };
 
 export const stats = [

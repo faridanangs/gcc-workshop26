@@ -31,20 +31,11 @@ const CATEGORY_OPTIONS = [
   { value: "umum", label: "Umum" },
 ];
 
-
-const LEVEL_OPTIONS = [
-  { value: "pemula", label: "Pemula" },
-  { value: "menengah", label: "Menengah" },
-  { value: "mahir", label: "Mahir" },
-];
-
 const initialForm = {
   fullName: "",
-  email: "",
   whatsapp: "",
   institution: "",
   category: "",
-  level: "",
   motivation: "",
   agree: false,
 };
@@ -55,7 +46,8 @@ export function RegistrationForm() {
   const [submitting, setSubmitting] = useState(false);
   const fileInputRef = useRef(null);
 
-  const updateField = (key, value) => setForm((prev) => ({ ...prev, [key]: value }));
+  const updateField = (key, value) =>
+    setForm((prev) => ({ ...prev, [key]: value }));
 
   const handleFileChange = (e) => {
     const selected = e.target.files?.[0];
@@ -70,7 +62,9 @@ export function RegistrationForm() {
   };
 
   const copyAccount = () => {
-    navigator.clipboard?.writeText("1234 5678 9099 — a.n. Panitia GCC Workshop");
+    navigator.clipboard?.writeText(
+      "1234 5678 9099 — a.n. Panitia GCC Workshop",
+    );
     toast("Nomor rekening disalin", {
       description: "Silakan tempel di aplikasi m-banking kamu.",
     });
@@ -96,7 +90,7 @@ export function RegistrationForm() {
     setTimeout(() => {
       setSubmitting(false);
       toast.success("Pendaftaran berhasil dikirim!", {
-        description: `Terima kasih ${form.fullName || "peserta"}, cek email kamu untuk konfirmasi kehadiran ${eventInfo.name} ${eventInfo.year}.`,
+        description: `Terima kasih ${form.fullName || "peserta"}, sudah mendaftar di ${eventInfo.name} ${eventInfo.year}.`,
         icon: <FiCheckCircle className="h-4 w-4" />,
       });
       setForm(initialForm);
@@ -118,8 +112,8 @@ export function RegistrationForm() {
               Amankan kursimu di {eventInfo.name} {eventInfo.year}.
             </h2>
             <p className="mt-4 text-ink-900/60">
-              Kuota terbatas. Lengkapi data diri, transfer biaya
-              pendaftaran, lalu unggah buktinya di form pendaftaran.
+              Kuota terbatas. Lengkapi data diri, transfer biaya pendaftaran,
+              lalu unggah buktinya di form pendaftaran.
             </p>
 
             <div className="mt-8 rounded-2xl border-2 border-ink-900/10 bg-cream-50 p-6">
@@ -131,11 +125,15 @@ export function RegistrationForm() {
               </p>
               <div className="mt-5 flex items-center justify-between rounded-xl bg-ink-900 px-4 py-3.5">
                 <div>
-                  <p className="text-xs text-cream-100/55">Transfer ke rekening</p>
+                  <p className="text-xs text-cream-100/55">
+                    Transfer ke rekening
+                  </p>
                   <p className="font-mono text-sm font-semibold text-cream-50">
                     1234 5678 9099
                   </p>
-                  <p className="text-xs text-cream-100/55">a.n. Panitia GCC Workshop</p>
+                  <p className="text-xs text-cream-100/55">
+                    a.n. Panitia GCC Workshop
+                  </p>
                 </div>
                 <button
                   type="button"
@@ -147,8 +145,8 @@ export function RegistrationForm() {
                 </button>
               </div>
               <p className="mt-4 text-xs leading-relaxed text-ink-900/50">
-                Sudah termasuk modul digital, snack &amp; makan siang, e-certificate,
-                serta merchandise eksklusif GCC {eventInfo.year}.
+                Sudah termasuk modul digital, snack &amp; makan siang,
+                e-certificate, serta merchandise eksklusif GCC {eventInfo.year}.
               </p>
             </div>
           </div>
@@ -163,7 +161,7 @@ export function RegistrationForm() {
             className="rounded-3xl border-2 border-ink-900/8 bg-cream-50 p-6 shadow-sm sm:p-8"
           >
             <div className="grid gap-5 sm:grid-cols-2">
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-1">
                 <Label htmlFor="fullName">Nama lengkap</Label>
                 <Input
                   id="fullName"
@@ -171,19 +169,6 @@ export function RegistrationForm() {
                   placeholder="cth. Nadia Rahmawati"
                   value={form.fullName}
                   onChange={(e) => updateField("fullName", e.target.value)}
-                  className="mt-2"
-                />
-              </div>
-
-              <div>
-                <Label htmlFor="email">Email aktif</Label>
-                <Input
-                  id="email"
-                  type="email"
-                  required
-                  placeholder="nama@email.com"
-                  value={form.email}
-                  onChange={(e) => updateField("email", e.target.value)}
                   className="mt-2"
                 />
               </div>
@@ -201,7 +186,7 @@ export function RegistrationForm() {
                 />
               </div>
 
-              <div className="sm:col-span-2">
+              <div className="sm:col-span-1">
                 <Label htmlFor="institution">Asal kampus / perusahaan</Label>
                 <Input
                   id="institution"
@@ -234,24 +219,10 @@ export function RegistrationForm() {
                 </Select>
               </div>
 
-              <div>
-                <Label>Level pengalaman</Label>
-                <Select name="level" value={form.level} onValueChange={(v) => updateField("level", v)}>
-                  <SelectTrigger className="mt-2">
-                    <SelectValue placeholder="Opsional" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {LEVEL_OPTIONS.map((l) => (
-                      <SelectItem key={l.value} value={l.value}>
-                        {l.label}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
-
               <div className="sm:col-span-2">
-                <Label htmlFor="motivation">Motivasi ikut workshop (opsional)</Label>
+                <Label htmlFor="motivation">
+                  Motivasi ikut workshop (opsional)
+                </Label>
                 <Textarea
                   id="motivation"
                   placeholder="Ceritakan singkat harapanmu mengikuti GCC Workshop..."
@@ -297,7 +268,8 @@ export function RegistrationForm() {
                         type="button"
                         onClick={() => {
                           setFile(null);
-                          if (fileInputRef.current) fileInputRef.current.value = "";
+                          if (fileInputRef.current)
+                            fileInputRef.current.value = "";
                         }}
                         className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-ink-900/50 hover:bg-ink-900/10 hover:text-ink-900"
                         aria-label="Hapus file"
@@ -317,17 +289,27 @@ export function RegistrationForm() {
                   onChange={(e) => updateField("agree", e.target.checked)}
                   className="mt-1 h-4 w-4 shrink-0 rounded border-2 border-ink-900/30 accent-[#D85A30]"
                 />
-                <label htmlFor="agree" className="text-sm leading-relaxed text-ink-900/65">
-                  Saya menyatakan data yang diisi benar dan menyetujui syarat &amp;
-                  ketentuan penyelenggaraan {eventInfo.name} {eventInfo.year}.
+                <label
+                  htmlFor="agree"
+                  className="text-sm leading-relaxed text-ink-900/65"
+                >
+                  Saya menyatakan data yang diisi benar dan menyetujui syarat
+                  &amp; ketentuan penyelenggaraan {eventInfo.name}{" "}
+                  {eventInfo.year}.
                 </label>
               </div>
             </div>
 
-            <Button type="submit" size="lg" disabled={submitting} className="mt-8 w-full">
+            <Button
+              type="submit"
+              size="lg"
+              disabled={submitting}
+              className="mt-8 w-full"
+            >
               {submitting ? (
                 <>
-                  <FiLoader className="h-4 w-4 animate-spin" /> Mengirim pendaftaran...
+                  <FiLoader className="h-4 w-4 animate-spin" /> Mengirim
+                  pendaftaran...
                 </>
               ) : (
                 <>
