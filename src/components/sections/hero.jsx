@@ -58,7 +58,7 @@ export function Hero() {
             initial="hidden"
             animate="show"
             custom={1}
-            className="text-balance font-display text-[2.6rem] font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.2rem]"
+            className="text-balance font-display text-[2rem] font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.2rem]"
           >
             Dari data,
             <br />
