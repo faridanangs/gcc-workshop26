@@ -20,7 +20,7 @@ export function Gallery() {
               // dokumentasi
             </span>
             <h2 className="mt-5 text-balance font-display text-3xl font-bold leading-tight text-ink-900 sm:text-4xl">
-              Keseruan Workshop dari tahun ke tahun.
+              Keseruan Workshop dari tahun sebelumnya.
             </h2>
           </div>
         </div>

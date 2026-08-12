@@ -29,7 +29,7 @@ export function Footer() {
             </div>
             <p className="mt-4 max-w-sm text-sm leading-relaxed text-cream-100/55">
               Workshop coding tahunan yang mempertemukan calon developer dengan
-              pemateri industri lewat sesi praktik yang hangat dan membumi.
+              pemateri berpengalaman lewat sesi praktik yang hangat.
             </p>
             <div className="mt-5 flex gap-3">
               {[FiInstagram, FiYoutube].map((Icon, i) => (
@@ -97,7 +97,7 @@ export function Footer() {
 
         <div className="flex flex-col items-center justify-between gap-3 pt-6 text-xs text-cream-100/40 sm:flex-row">
           <p>
-            © {eventInfo.year} {eventInfo.name}. Seluruh hak cipta dilindungi.
+            © {eventInfo.year} {eventInfo.name}.
           </p>
         </div>
       </div>

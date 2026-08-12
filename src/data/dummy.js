@@ -218,8 +218,8 @@ export const speakers = [
     bio: "Mengajar dan aktif membina mahasiswa di bidang ilmu komputer selama bertahun-tahun, dengan fokus pada pengembangan perangkat lunak dan pembelajaran pemrograman yang aplikatif.",
     quote: "Belajar itu bukan soal secepat apa kamu paham, tapi seberani apa kamu mulai.",
     tags: ["Data Sciences", "Basis Data", "Machine Learning"],
-    photo: "https://i.pravatar.cc/400?img=68",
-    portfolioUrl: "https://unram.ac.id", // TODO: ganti dengan profil/portofolio asli
+    photo: "https://i.pravatar.cc/400?img=55",
+    portfolioUrl: "#", // TODO: ganti dengan profil/portofolio asli
     portfolioLabel: "CV",
   },
 ];
