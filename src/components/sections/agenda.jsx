@@ -14,12 +14,11 @@ export function Agenda() {
               // rundown-acara
             </span>
             <h2 className="mt-5 text-balance font-display text-3xl font-bold leading-tight sm:text-4xl">
-              Satu hari, tersusun rapi dari pagi sampai sore.
+              Satu hari, tersusun rapi dari pagi sampai siang.
             </h2>
           </div>
           <p className="max-w-xs text-sm text-cream-100/55">
-            Jadwal dapat berubah menyesuaikan kondisi di lapangan. Update terbaru akan
-            dikirim lewat email peserta.
+            Jadwal dapat berubah menyesuaikan kondisi di lapangan.
           </p>
         </div>
 

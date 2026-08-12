@@ -100,11 +100,6 @@ export function Mentors() {
             </div>
 
             <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
-              <Button asChild size="lg">
-                <a href="#daftar">
-                  Daftar dan ikuti materinya <FiArrowUpRight />
-                </a>
-              </Button>
               {main.portfolioUrl && (
                 <a
                   href={main.portfolioUrl}
@@ -119,7 +114,6 @@ export function Mentors() {
             </div>
           </div>
         </motion.div>
-
       </div>
     </section>
   );

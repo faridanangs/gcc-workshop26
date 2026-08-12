@@ -3,9 +3,12 @@ export const eventInfo = {
   edition: "Edisi ke-2",
   year: "2026",
   tagline: "Gamatika Coding Club",
+  theme: "Introduction to Data Science & Machine Learning: From Data to Predictions",
+  webinarTitle: "Demystifying Data Science & ML: How Computers Learn from Data",
+  workshopTitle: "Building Your First Predictive Model: A Beginner's Guide to DS",
   date: "Sabtu, 24 Oktober 2026",
-  time: "08.00 - 17.00 WIB",
-  location: "Auditorium Digital Hub, Mars",
+  time: "08.00 - 13.05 WITA",
+  location: "Aula MIPA, Universitas Mataram",
   price: "Rp 200.000",
 };
 
@@ -76,41 +79,59 @@ export const galleryVideos = [
   },
 ];
 
+// Rundown resmi acara (sumber: SUSUNAN_ACARA_GCC.docx), dirangkum untuk landing page.
+// Item protokoler pembukaan (kalam ilahi, lagu kebangsaan, sambutan2) digabung jadi satu
+// entri "Seremonial Pembukaan" biar timeline publik gak kepanjangan.
 export const agenda = [
   {
     time: "08.00",
-    title: "Registrasi & Welcoming",
-    desc: "Ambil e-ticket, name tag, dan starter kit di meja registrasi.",
+    title: "Registrasi Peserta",
+    desc: "Ambil ID-Card, dan starter kit di meja registrasi.",
   },
   {
     time: "09.00",
-    title: "Opening & Keynote",
-    desc: "Pembukaan acara dan sesi inspirasi dari keynote speaker.",
+    title: "Seremonial Pembukaan",
+    desc: "Pembukaan MC, lagu kebangsaan, laporan ketua panitia, dan sambutan dari Ketua Umum GCC, Pembina GCC, Kaprodi Matematika, hingga Dekan FMIPA.",
   },
   {
-    time: "10.00",
-    title: "Sesi Kelas Paralel I",
-    desc: "Workshop hands-on sesuai track pilihan masing-masing peserta.",
+    time: "10.05",
+    title: "Foto Bersama & Persiapan Materi",
+    desc: "Sesi foto bersama tamu undangan, dilanjutkan pengalihan ke moderator dan pembacaan CV pemateri.",
   },
   {
-    time: "12.00",
-    title: "Istirahat & Makan Siang",
-    desc: "Waktu bersantai sekaligus networking dengan sesama peserta.",
+    time: "10.20",
+    title: "Webinar — Demystifying Data Science & ML",
+    desc: "Penyampaian materi \"How Computers Learn from Data\" langsung oleh pemateri.",
   },
   {
-    time: "13.00",
-    title: "Sesi Kelas Paralel II",
-    desc: "Lanjutan praktik project mini bersama pemateri pendamping.",
+    time: "10.50",
+    title: "Quiz Sesi 1",
+    desc: "Uji pemahaman peserta lewat kuis interaktif seputar materi webinar.",
   },
   {
-    time: "15.30",
-    title: "Sharing Session Alumni",
-    desc: "Cerita perjalanan karier dari alumni GCC edisi sebelumnya.",
+    time: "11.00",
+    title: "ISHOMA",
+    desc: "Istirahat, sholat, dan makan siang bersama.",
   },
   {
-    time: "16.30",
-    title: "Penutupan & Foto Bersama",
-    desc: "Pembagian sertifikat, doorprize, dan sesi foto bersama.",
+    time: "11.50",
+    title: "Workshop — Building Your First Predictive Model",
+    desc: "Latihan hands-on membangun model prediktif pertamamu, dibimbing langsung oleh pemateri.",
+  },
+  {
+    time: "12.25",
+    title: "Quiz Sesi 2",
+    desc: "Kuis penutup sekaligus evaluasi hasil latihan peserta.",
+  },
+  {
+    time: "12.45",
+    title: "Pemberian Hadiah & Sertifikasi",
+    desc: "Hadiah untuk peserta terbaik, serta penyerahan plakat dan sertifikat kepada pemateri.",
+  },
+  {
+    time: "12.55",
+    title: "Hiburan & Penutupan",
+    desc: "Hiburan penutup sekaligus serah terima dari moderator ke MC untuk menutup acara.",
   },
 ];
 
@@ -120,39 +141,6 @@ export const tracks = [
   { value: "ui-ux", label: "UI/UX Design" },
   { value: "data-ai", label: "Data & AI" },
   { value: "cloud-devops", label: "Cloud & DevOps" },
-];
-
-export const mentors = [
-  {
-    name: "Raka Pramudya",
-    role: "Frontend Engineer",
-    photo: "https://i.pravatar.cc/300?img=13",
-  },
-  {
-    name: "Amelia Saputri",
-    role: "Product Designer",
-    photo: "https://i.pravatar.cc/300?img=32",
-  },
-  {
-    name: "Bagas Nugroho",
-    role: "Backend Engineer",
-    photo: "https://i.pravatar.cc/300?img=51",
-  },
-  {
-    name: "Citra Maheswari",
-    role: "Data Scientist",
-    photo: "https://i.pravatar.cc/300?img=47",
-  },
-  {
-    name: "Dimas Aditya",
-    role: "Mobile Engineer",
-    photo: "https://i.pravatar.cc/300?img=60",
-  },
-  {
-    name: "Nadia Rahmawati",
-    role: "Cloud Engineer",
-    photo: "https://i.pravatar.cc/300?img=25",
-  },
 ];
 
 export const sponsors = {
@@ -206,7 +194,7 @@ export const testimonials = [
 export const faqs = [
   {
     q: "Apakah workshop ini cocok untuk pemula?",
-    a: "Sangat cocok. Setiap track punya kelas dengan level pemula sampai menengah, dan pemateri akan mendampingi langsung selama sesi praktik.",
+    a: "Sangat cocok. Materi disusun dari konsep dasar Data Science & ML sampai praktik langsung, dan pemateri akan mendampingi selama sesi latihan.",
   },
   {
     q: "Apa saja yang perlu dibawa peserta?",
@@ -220,12 +208,7 @@ export const faqs = [
     q: "Apakah mendapat sertifikat setelah mengikuti acara?",
     a: "Ya, setiap peserta yang hadir penuh akan menerima e-certificate resmi dari panitia GCC Workshop 2026.",
   },
-  {
-    q: "Apakah kuota pendaftaran terbatas?",
-    a: "Benar, setiap track hanya dibuka untuk jumlah terbatas agar sesi pendampingan pemateri tetap efektif. Daftar lebih awal disarankan.",
-  },
 ];
-
 
 export const speakers = [
   {
@@ -234,9 +217,9 @@ export const speakers = [
     institution: "Universitas Mataram (UNRAM)",
     bio: "Mengajar dan aktif membina mahasiswa di bidang ilmu komputer selama bertahun-tahun, dengan fokus pada pengembangan perangkat lunak dan pembelajaran pemrograman yang aplikatif.",
     quote: "Belajar itu bukan soal secepat apa kamu paham, tapi seberani apa kamu mulai.",
-    tags: ["Pemrograman Web", "Basis Data", "Rekayasa Perangkat Lunak"],
+    tags: ["Data Sciences", "Basis Data", "Machine Learning"],
     photo: "https://i.pravatar.cc/400?img=68",
     portfolioUrl: "https://unram.ac.id", // TODO: ganti dengan profil/portofolio asli
-    portfolioLabel: "Portfolio",
-  }
+    portfolioLabel: "CV",
+  },
 ];

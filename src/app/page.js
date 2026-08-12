@@ -16,7 +16,7 @@ export default function Home() {
     <main className="relative">
       <Navbar />
       <Hero />
-      <About />
+      {/* <About /> */}
       <Agenda />
       <Gallery />
       <Mentors />

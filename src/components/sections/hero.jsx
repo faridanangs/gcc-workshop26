@@ -11,10 +11,10 @@ import {
 } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { eventInfo, galleryPhotos, stats } from "@/data/dummy";
-import Globe3D from "../ui/3d-globe";
 import { BackgroundBeams } from "../ui/background-beams";
 import { EncryptedText } from "../ui/encrypted-text";
 import { DraggableCardDemo } from "./dragable-image";
+import { Agenda } from "./agenda";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -46,7 +46,7 @@ export function Hero() {
             className="section-heading-eyebrow mb-6 inline-flex items-center rounded-full border border-cream-50/15 bg-cream-50/5 px-3 py-2 text-xs"
           >
             <EncryptedText
-              text={`$ gamatika-coding-club --run ${eventInfo.year}`}
+              text={`$ gamatika-coding-club --run ${eventInfo.year} --theme data-science-ml`}
               encryptedClassName="text-white"
               revealedClassName="dark:text-white  text-amber-400"
               revealDelayMs={100}
@@ -60,11 +60,11 @@ export function Hero() {
             custom={1}
             className="text-balance font-display text-[2.6rem] font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.2rem]"
           >
-            Belajar coding,
+            Dari data,
             <br />
-            dengan cara paling{" "}
+            menuju{" "}
             <span className="relative inline-block text-clay-500">
-              hangat.
+              prediksi.
               <svg
                 viewBox="0 0 200 14"
                 className="absolute -bottom-2 left-0 w-full text-amber-500"
@@ -88,9 +88,12 @@ export function Hero() {
             custom={2}
             className="mt-6 max-w-lg text-balance font-body text-base leading-relaxed text-cream-100/70 sm:text-lg"
           >
-            {eventInfo.edition} workshop tahunan {eventInfo.tagline} — sehari
-            penuh praktik langsung, ditemani pemateri industri, dan komunitas yang
-            bikin belajar terasa seperti ngobrol bareng teman.
+            {eventInfo.edition} workshop tahunan {eventInfo.tagline} bertema{" "}
+            <span className="text-cream-50">
+              Data Science &amp; Machine Learning
+            </span>{" "}
+            — mulai dari konsep dasar di sesi webinar, sampai praktik langsung
+            membangun model prediksi pertamamu bareng pemateri berpengalaman.
           </motion.p>
 
           <motion.div

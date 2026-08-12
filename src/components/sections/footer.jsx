@@ -99,7 +99,6 @@ export function Footer() {
           <p>
             © {eventInfo.year} {eventInfo.name}. Seluruh hak cipta dilindungi.
           </p>
-          <p className="font-mono">dibuat dengan hangat oleh panitia GCC</p>
         </div>
       </div>
     </footer>

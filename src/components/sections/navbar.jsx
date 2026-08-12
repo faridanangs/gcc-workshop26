@@ -14,7 +14,7 @@ import { eventInfo } from "@/data/dummy";
 import Image from "next/image";
 
 const NAV_LINKS = [
-  { href: "#tentang", label: "Tentang" },
+  // { href: "#tentang", label: "Tentang" },
   { href: "#rundown", label: "Rundown" },
   { href: "#galeri", label: "Galeri" },
   { href: "#pemateri", label: "Pemateri" },
