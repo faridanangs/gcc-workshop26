@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { FiArrowUpRight } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
-import { eventInfo } from "@/data/dummy";
+import { eventInfo } from "@/data/workshop";
 
 export function MobileCta() {
   const [visible, setVisible] = useState(false);

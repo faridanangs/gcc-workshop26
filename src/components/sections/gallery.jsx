@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { FiPlay, FiZoomIn } from "react-icons/fi";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
-import { galleryPhotos, galleryVideos } from "@/data/dummy";
+import { galleryPhotos, galleryVideos } from "@/data/workshop";
 import Image from "next/image";
 
 export function Gallery() {
@@ -45,18 +45,13 @@ export function Gallery() {
                     >
                       <Image
                         src={photo.src}
-                        alt={photo.caption}
+                        alt={photo.id}
                         width={500}
                         height={650}
                         loading="lazy"
                         sizes="(max-width: 640px) 50vw, 33vw"
                         className="w-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
-                      <div className="absolute inset-0 flex items-end bg-gradient-to-t from-ink-950/70 via-ink-950/0 to-ink-950/0 p-4 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-                        <p className="text-left text-xs font-semibold text-cream-50">
-                          {photo.caption}
-                        </p>
-                      </div>
                       <span className="absolute right-3 top-3 flex h-8 w-8 items-center justify-center rounded-full bg-cream-50/90 text-ink-900 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                         <FiZoomIn className="h-4 w-4" />
                       </span>
@@ -65,14 +60,18 @@ export function Gallery() {
                   <DialogContent>
                     <Image
                       src={photo.src}
-                      alt={photo.caption}
+                      alt={photo.id}
                       width={900}
                       height={1200}
                       className="max-h-[75vh] w-full rounded-xl object-contain"
                     />
-                    <p className="px-3 py-3 text-center text-sm font-medium text-ink-900/70">
-                      {photo.caption}
-                    </p>
+                    {photo?.caption ? (
+                      <p className="px-3 py-3 text-center text-sm font-medium text-ink-900">
+                        {photo?.caption}
+                      </p>
+                    ) : (
+                      ""
+                    )}
                   </DialogContent>
                 </Dialog>
               ))}
@@ -96,7 +95,7 @@ export function Gallery() {
                     >
                       <Image
                         src={video.thumbnail}
-                        alt={video.title}
+                        alt={video.id}
                         fill
                         loading="lazy"
                         sizes="(max-width: 640px) 100vw, 50vw"
@@ -108,9 +107,6 @@ export function Gallery() {
                           <FiPlay className="ml-0.5 h-5 w-5" />
                         </span>
                       </span>
-                      <p className="absolute bottom-3 left-3 right-3 text-left text-sm font-semibold text-cream-50">
-                        {video.title}
-                      </p>
                     </motion.button>
                   </DialogTrigger>
                   <DialogContent className="max-w-2xl p-0">

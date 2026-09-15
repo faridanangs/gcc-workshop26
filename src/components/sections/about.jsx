@@ -26,7 +26,8 @@ const points = [
   },
 ];
 
-export function About() {
+
+export default function About() {
   return (
     <section id="tentang" className="relative bg-cream-50 py-24 sm:py-28">
       <div className="container">
@@ -67,3 +68,4 @@ export function About() {
     </section>
   );
 }
+

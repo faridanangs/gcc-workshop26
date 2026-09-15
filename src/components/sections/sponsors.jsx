@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import { FiHexagon } from "react-icons/fi";
-import { sponsors } from "@/data/dummy";
+import { sponsors } from "@/data/workshop";
 
 function SponsorCard({ name, size = "md" }) {
   const sizes = {
@@ -44,7 +44,7 @@ export function Sponsors() {
         <div className="mt-14 space-y-10">
           <div>
             <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-wide text-amber-600">
-              Platinum Partner
+              Sponsor
             </p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               {sponsors.platinum.map((s) => (
@@ -55,7 +55,7 @@ export function Sponsors() {
 
           <div>
             <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-wide text-clay-600">
-              Gold Partner
+              Media Partner
             </p>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
               {sponsors.gold.map((s) => (

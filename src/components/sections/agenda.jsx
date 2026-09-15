@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { agenda } from "@/data/dummy";
+import { agenda } from "@/data/workshop";
 
 export function Agenda() {
   return (

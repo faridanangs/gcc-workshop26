@@ -7,9 +7,9 @@ export const eventInfo = {
   webinarTitle: "Demystifying Data Science & ML: How Computers Learn from Data",
   workshopTitle: "Building Your First Predictive Model: A Beginner's Guide to DS",
   date: "Sabtu, 24 Oktober 2026",
-  time: "08.00 - 13.05 WITA",
+  time: "08.00 - 15.05 WITA",
   location: "Aula MIPA, Universitas Mataram",
-  price: "Rp XX.000",
+  price: "Rp 35.000",
 };
 
 export const stats = [
@@ -23,58 +23,54 @@ export const galleryPhotos = [
   {
     id: "p1",
     src: "/images/peserta3.webp",
-    caption: "GCC 2024 — Sesi kerja kelompok",
+    caption: "",
   },
   {
     id: "p2",
     src: "/images/peserta4.webp",
-    caption: "GCC 2024 — Networking session",
+    caption: "",
   },
   {
     id: "p3",
     src: "/images/peserta5.webp",
-    caption: "GCC 2023 — Demo day peserta",
+    caption: "",
   },
   {
     id: "p4",
     src: "/images/peserta6.webp",
-    caption: "GCC 2023 — Foto bersama penutupan",
+    caption: "",
   },
   {
     id: "p5",
     src: "/images/peserta7.webp",
-    caption: "GCC 2022 — Sesi tanya jawab",
+    caption: "",
   },
   {
     id: "p6",
     src: "/images/peserta8.webp",
-    caption: "GCC 2022 — Antusiasme peserta",
+    caption: "Registrasi Peserta",
   },
 ];
 
 export const galleryVideos = [
   {
     id: "v1",
-    thumbnail: "https://picsum.photos/seed/gcc-video-1/900/600",
-    title: "Recap GCC 2025",
+    thumbnail: "https://res.cloudinary.com/detetmaw8/video/upload/f_auto,q_auto,w_900,h_600,c_fill,g_auto,so_1/workshop6_ix02q9.jpg",
     src: "https://res.cloudinary.com/detetmaw8/video/upload/f_auto,q_auto/v1786348929/workshop6_ix02q9.mp4",
   },
   {
     id: "v2",
-    thumbnail: "https://picsum.photos/seed/gcc-video-2/900/600",
-    title: "Cuplikan Workshop — Track Web Dev",
+    thumbnail: "https://res.cloudinary.com/detetmaw8/video/upload/f_auto,q_auto,w_900,h_600,c_fill,g_auto,so_1/workshop2_ri1tnw.jpg",
     src: "https://res.cloudinary.com/detetmaw8/video/upload/f_auto,q_auto/v1786348929/workshop2_ri1tnw.mp4",
   },
   {
     id: "v6",
-    thumbnail: "https://picsum.photos/seed/gcc-video-3/900/600",
-    title: "Testimoni Peserta GCC 2024",
+    thumbnail: "https://res.cloudinary.com/detetmaw8/video/upload/f_auto,q_auto,w_900,h_600,c_fill,g_auto,so_1/workshop7_u3usjh.jpg",
     src: "https://res.cloudinary.com/detetmaw8/video/upload/f_auto,q_auto/v1786348929/workshop7_u3usjh.mp4",
   },
   {
     id: "v7",
-    thumbnail: "https://picsum.photos/seed/gcc-video-4/900/600",
-    title: "Testimoni Peserta GCC 2024",
+    thumbnail: "https://res.cloudinary.com/detetmaw8/video/upload/f_auto,q_auto,w_900,h_600,c_fill,g_auto,so_1/workshop1_lsv3rq.jpg",
     src: "https://res.cloudinary.com/detetmaw8/video/upload/f_auto,q_auto/v1786348929/workshop1_lsv3rq.mp4",
   },
 ];
@@ -198,27 +194,27 @@ export const faqs = [
   },
   {
     q: "Apa saja yang perlu dibawa peserta?",
-    a: "Cukup bawa laptop yang sudah terisi daya, charger, dan semangat belajar. Modul serta koneksi internet sudah disediakan panitia.",
+    a: "Cukup bawa laptop yang sudah terisi daya, charger, dan semangat belajar. Modul, cokrol serta koneksi internet sudah disediakan panitia.",
   },
   {
     q: "Bagaimana cara pembayaran biaya pendaftaran?",
-    a: "Pembayaran dilakukan via transfer ke rekening panitia yang tertera di halaman pendaftaran, lalu unggah bukti transfer pada form.",
+    a: "Pembayaran bisa dilakukan via transfer ke rekening panitia yang tertera di halaman pendaftaran, atau via offline di Fakultas MIPA Unram depan ruangan A.1.6 (mehibun).",
   },
   {
     q: "Apakah mendapat sertifikat setelah mengikuti acara?",
-    a: "Ya, setiap peserta yang hadir penuh akan menerima e-certificate resmi dari panitia GCC Workshop 2026.",
+    a: "Ya, setiap peserta yang hadir penuh akan menerima sertifikat resmi dari panitia GCC Workshop 2026.",
   },
 ];
 
 export const speakers = [
   {
-    name: "Pak Tri",
+    name: "Tri Maryono Rusadi, M.Si",
     role: "Dosen",
     institution: "Universitas Mataram (UNRAM)",
-    bio: "Mengajar dan aktif membina mahasiswa di bidang ilmu komputer selama bertahun-tahun, dengan fokus pada pengembangan perangkat lunak dan pembelajaran pemrograman yang aplikatif.",
+    bio: "Mengajar dan aktif membina mahasiswa di bidang ilmu komputer, dengan fokus pada pengembangan perangkat lunak dan pembelajaran pemrograman yang aplikatif.",
     quote: "Belajar itu bukan soal secepat apa kamu paham, tapi seberani apa kamu mulai.",
     tags: ["Data Sciences", "Basis Data", "Machine Learning"],
-    photo: "https://i.pravatar.cc/400?img=55",
+    photo: "/images/pak_tri.png",
     portfolioUrl: "#", // TODO: ganti dengan profil/portofolio asli
     portfolioLabel: "CV",
   },

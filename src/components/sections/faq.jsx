@@ -1,7 +1,13 @@
 "use client";
 
-import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from "@/components/ui/accordion";
-import { faqs } from "@/data/dummy";
+import {
+  Accordion,
+  AccordionItem,
+  AccordionTrigger,
+  AccordionContent,
+} from "@/components/ui/accordion";
+import { faqs } from "@/data/workshop";
+import { FaPhone, FaPhoneAlt } from "react-icons/fa";
 
 export function FAQ() {
   return (
@@ -15,10 +21,24 @@ export function FAQ() {
             <h2 className="mt-5 text-balance font-display text-3xl font-bold leading-tight text-ink-900 sm:text-4xl">
               Masih ada yang mau ditanyakan?
             </h2>
-            <p className="mt-4 text-ink-900/60">
-              Kalau pertanyaanmu belum terjawab di sini, langsung hubungi panitia lewat
-              WhatsApp atau email di bagian footer.
+            <p className="mt-4 text-ink-900/90">
+              Kalau pertanyaanmu belum terjawab di sini, langsung hubungi
+              panitia lewat No WhatsApp dibawah ini:
             </p>
+            <span className="flex flex-col gap-2 text-sm mt-2">
+              <a
+                href="https://wa.me/+6282323042337"
+                className="text-black underline flex gap-2 items-center"
+              >
+                <FaPhoneAlt className="bg-clay-400/40 rounded-full text-lg w-6 h-6 p-1 inline-block"/> +6282323042337 (Ismy)
+              </a>
+              <a
+                href="https://wa.me/+6281370383648"
+                className="text-black underline  flex gap-2 items-center"
+              >
+                <FaPhoneAlt className="bg-clay-400/40 rounded-full text-lg w-6 h-6 p-1 inline-block" /> +6281370383648 (Zila)
+              </a>
+            </span>
           </div>
 
           <Accordion type="single" collapsible className="divide-y-0">

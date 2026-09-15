@@ -10,7 +10,7 @@ import {
   FiMapPin,
 } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
-import { eventInfo } from "@/data/dummy";
+import { eventInfo } from "@/data/workshop";
 import Image from "next/image";
 
 const NAV_LINKS = [

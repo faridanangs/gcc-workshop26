@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 import { FiMessageCircle, FiChevronLeft, FiChevronRight } from "react-icons/fi";
-import { testimonials } from "@/data/dummy";
+import { testimonials } from "@/data/workshop";
 
 export function Testimonials() {
   const trackRef = useRef(null);

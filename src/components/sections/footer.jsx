@@ -5,7 +5,7 @@ import {
   FiMail,
   FiMapPin,
 } from "react-icons/fi";
-import { eventInfo } from "@/data/dummy";
+import { eventInfo } from "@/data/workshop";
 import Image from "next/image";
 
 export function Footer() {
@@ -32,16 +32,21 @@ export function Footer() {
               pemateri berpengalaman lewat sesi praktik yang hangat.
             </p>
             <div className="mt-5 flex gap-3">
-              {[FiInstagram, FiYoutube].map((Icon, i) => (
+              
                 <a
-                  key={i}
-                  href="#"
+                  href="https://www.youtube.com/@GamatikaCoding"
                   aria-label="Sosial media GCC"
                   className="flex h-9 w-9 items-center justify-center rounded-full bg-cream-50/5 text-cream-100 transition-colors hover:bg-clay-500 hover:text-cream-50"
                 >
-                  <Icon className="h-4 w-4" />
+                  <FiYoutube className="h-4 w-4" />
                 </a>
-              ))}
+                <a
+                  href="https://instagram.com/gamatika_coding_club"
+                  aria-label="Sosial media GCC"
+                  className="flex h-9 w-9 items-center justify-center rounded-full bg-cream-50/5 text-cream-100 transition-colors hover:bg-clay-500 hover:text-cream-50"
+                >
+                  <FiInstagram className="h-4 w-4" />
+                </a>
             </div>
           </div>
 
@@ -50,11 +55,11 @@ export function Footer() {
               Navigasi
             </p>
             <ul className="mt-4 space-y-2.5 text-sm text-cream-100/70">
-              <li>
+              {/* <li>
                 <a href="#tentang" className="hover:text-clay-500">
                   Tentang
                 </a>
-              </li>
+              </li> */}
               <li>
                 <a href="#rundown" className="hover:text-clay-500">
                   Rundown
@@ -79,14 +84,14 @@ export function Footer() {
           </div>
 
           <div>
-            <p className="font-mono text-xs font-semibold uppercase tracking-wide text-cream-100/45">
+            {/* <p className="font-mono text-xs font-semibold uppercase tracking-wide text-cream-100/45">
               Kontak panitia
-            </p>
+            </p> */}
             <ul className="mt-4 space-y-3 text-sm text-cream-100/70">
-              <li className="flex items-start gap-2.5">
+              {/* <li className="flex items-start gap-2.5">
                 <FiMail className="mt-0.5 h-4 w-4 shrink-0 text-clay-500" />
                 halo@gccworkshop.id
-              </li>
+              </li> */}
               <li className="flex items-start gap-2.5">
                 <FiMapPin className="mt-0.5 h-4 w-4 shrink-0 text-clay-500" />
                 {eventInfo.location}

@@ -10,7 +10,7 @@ import {
   FiPlay,
 } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
-import { eventInfo, galleryPhotos, stats } from "@/data/dummy";
+import { eventInfo, galleryPhotos, stats } from "@/data/workshop";
 import { BackgroundBeams } from "../ui/background-beams";
 import { EncryptedText } from "../ui/encrypted-text";
 import { DraggableCardDemo } from "./dragable-image";
@@ -46,7 +46,7 @@ export function Hero() {
             className="section-heading-eyebrow mb-6 inline-flex items-center rounded-full border border-cream-50/15 bg-cream-50/5 px-3 py-2 text-xs"
           >
             <EncryptedText
-              text={`$ gamatika-coding-club --run ${eventInfo.year} --theme data-science-ml`}
+              text={`$ workshop gamatika-coding-club 2026`}
               encryptedClassName="text-white"
               revealedClassName="dark:text-white  text-amber-400"
               revealDelayMs={100}

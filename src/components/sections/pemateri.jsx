@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { FiArrowUpRight, FiExternalLink } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
-import { speakers, stats } from "@/data/dummy";
+import { speakers, stats } from "@/data/workshop";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -51,7 +51,7 @@ export function Mentors() {
           className="relative mt-14 grid gap-0 overflow-hidden rounded-3xl border-2 border-ink-900/8 bg-cream-50 shadow-lg shadow-ink-900/5 md:grid-cols-[0.9fr_1.1fr]"
         >
           {/* Foto + kutipan */}
-          <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-auto">
+          <div className="relative aspect-[4/5] w-full overflow-hidden md:h-[60vh]">
             <Image
               src={main.photo}
               alt={main.name}
@@ -70,10 +70,10 @@ export function Mentors() {
               <span className="block font-display text-5xl font-bold leading-none text-clay-500/80">
                 &ldquo;
               </span>
-              <p className="-mt-3 text-balance font-display text-lg font-semibold leading-snug text-cream-50 sm:text-xl">
+              <p className="-mt-3 text-balance font-display text-lg font-semibold leading-snug text-clay-100 sm:text-xl">
                 {main.quote}
               </p>
-              <p className="mt-4 font-display text-xl font-bold text-cream-50">
+              <p className="mt-4 font-display text-xl font-bold text-clay-100">
                 {main.name}
               </p>
               <p className="mt-0.5 text-sm text-cream-100/75">
@@ -83,7 +83,7 @@ export function Mentors() {
           </div>
 
           {/* Konten */}
-          <div className="flex flex-col justify-center p-8 sm:p-10 lg:p-12">
+          <div className="flex flex-col justify-center md:items-start md:justify-start p-8 sm:p-10 lg:p-12">
             <p className="text-balance leading-relaxed text-ink-900/65">
               {main.bio}
             </p>
@@ -99,7 +99,7 @@ export function Mentors() {
               ))}
             </div>
 
-            <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
+            {/* <div className="mt-8 flex flex-wrap items-center gap-x-6 gap-y-3">
               {main.portfolioUrl && (
                 <a
                   href={main.portfolioUrl}
@@ -111,7 +111,7 @@ export function Mentors() {
                   <FiExternalLink className="h-3.5 w-3.5" />
                 </a>
               )}
-            </div>
+            </div> */}
           </div>
         </motion.div>
       </div>
