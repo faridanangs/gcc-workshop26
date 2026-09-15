@@ -25,27 +25,32 @@ import {
   SelectContent,
   SelectItem,
 } from "@/components/ui/select";
-import { eventInfo } from "@/data/workshop";
 
-const CATEGORY_OPTIONS = [
-  { value: "mahasiswa", label: "Mahasiswa" },
-  { value: "profesional", label: "Profesional" },
-  { value: "umum", label: "Umum" },
-];
+import { eventInfo } from "@/data/workshop";
 
 // TODO: ganti sesuai akun & grup asli kamu
 const IG_HANDLE = "@gamatika_coding_club";
 const IG_URL = "https://instagram.com/gamatika_coding_club";
 const WA_GROUP_LINK = "https://chat.whatsapp.com/GANTI-DENGAN-LINK-GRUP-ASLI";
-const BANK_ACCOUNT = "1234 5678 9099";
-const BANK_ACCOUNT_NAME = "a.n. Panitia GCC Workshop";
+
+const data_bank = [
+  {
+    name: "BRI",
+    account_name: "a.n. ZILA AZIRA",
+    bank_account: "357501065600534",
+  },
+  {
+    name: "DANA",
+    account_name: "a.n. ZILA AZIRA",
+    bank_account: "+6281370383648",
+  },
+];
 
 const initialForm = {
   fullName: "",
   whatsapp: "",
   email: "",
   institution: "",
-  category: "",
   motivation: "",
   agree: false,
 };
@@ -58,6 +63,7 @@ export function RegistrationForm() {
   const [igProof, setIgProof] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [selectedBankIndex, setSelectedBankIndex] = useState(0);
   const paymentInputRef = useRef(null);
   const igInputRef = useRef(null);
 
@@ -77,9 +83,10 @@ export function RegistrationForm() {
   };
 
   const copyAccount = () => {
-    navigator.clipboard?.writeText(`${BANK_ACCOUNT}`);
-    toast("Nomor rekening disalin", {
-      description: "Silakan tempel di aplikasi m-banking kamu.",
+    const bank = data_bank[selectedBankIndex];
+    navigator.clipboard?.writeText(bank.bank_account);
+    toast(`Nomor ${bank.name} disalin`, {
+      description: "Silakan tempel di aplikasi pembayaran kamu.",
     });
   };
 
@@ -200,8 +207,8 @@ export function RegistrationForm() {
             </h2>
             <p className="mt-4 text-ink-900/60">
               Kuota terbatas. Lengkapi data diri, transfer biaya pendaftaran,
-              follow Instagram GAMATIKA Coding Club, lalu unggah kedua buktinya di form
-              pendaftaran.
+              follow Instagram GAMATIKA Coding Club, lalu unggah kedua buktinya
+              di form pendaftaran.
             </p>
 
             {/* Payment panel */}
@@ -212,27 +219,48 @@ export function RegistrationForm() {
               <p className="mt-1 font-display text-3xl font-bold text-clay-500">
                 {eventInfo.price}
               </p>
-              <div className="mt-5 flex items-center justify-between rounded-xl bg-ink-900 px-4 py-3.5">
+
+              {/* Pilih metode pembayaran */}
+              <div className="mt-5 flex gap-2">
+                {data_bank.map((v, i) => (
+                  <button
+                    key={v.name}
+                    type="button"
+                    onClick={() => setSelectedBankIndex(i)}
+                    className={`flex-1 rounded-lg border-2 px-3 py-2 text-sm font-semibold transition-colors ${
+                      selectedBankIndex === i
+                        ? "border-clay-500 bg-clay-500 text-cream-50"
+                        : "border-ink-900/12 bg-cream-100/60 text-ink-900/55 hover:border-clay-500/40 hover:text-ink-900"
+                    }`}
+                  >
+                    {v.name}
+                  </button>
+                ))}
+              </div>
+
+              {/* Nomor rekening/akun yang dipilih */}
+              <div className="mt-3 flex items-center justify-between rounded-xl bg-ink-900 px-4 py-3.5">
                 <div>
                   <p className="text-xs text-cream-100/55">
-                    Transfer ke rekening
+                    Transfer ke {data_bank[selectedBankIndex].name}
                   </p>
-                  <p className="font-mono text-sm font-semibold text-cream-50">
-                    {BANK_ACCOUNT}
+                  <p className="mt-0.5 font-mono text-base font-semibold text-cream-50">
+                    {data_bank[selectedBankIndex].bank_account}
                   </p>
                   <p className="text-xs text-cream-100/55">
-                    {BANK_ACCOUNT_NAME}
+                    {data_bank[selectedBankIndex].account_name}
                   </p>
                 </div>
                 <button
                   type="button"
                   onClick={copyAccount}
                   className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cream-50/10 text-cream-50 transition-colors hover:bg-clay-500"
-                  aria-label="Salin nomor rekening"
+                  aria-label={`Salin nomor ${data_bank[selectedBankIndex].name}`}
                 >
                   <FiCopy className="h-4 w-4" />
                 </button>
               </div>
+
               <p className="mt-4 text-xs leading-relaxed text-ink-900/90">
                 Sudah termasuk modul digital, snack &amp; makan siang,
                 sertifikat, Souvenir, serta Dorprize yang menarik.
@@ -274,7 +302,8 @@ export function RegistrationForm() {
                 rel="noreferrer"
                 className="mt-4 inline-flex items-center gap-2 text-sm font-semibold text-clay-600 hover:text-clay-500"
               >
-                Open Profile Instagram GCC<FiArrowRight className="h-4 w-4" />
+                Open Profile Instagram GCC
+                <FiArrowRight className="h-4 w-4" />
               </a>
             </div>
           </div>
@@ -353,7 +382,7 @@ export function RegistrationForm() {
                   />
                 </div>
 
-                 <div className="sm:col-span-2">
+                <div className="sm:col-span-2">
                   <Label>Bukti follow Instagram {IG_HANDLE}*</Label>
                   {renderFileField({
                     id: "igProof",
@@ -428,9 +457,9 @@ export function RegistrationForm() {
                 Pendaftaran berhasil!
               </h3>
               <p className="mt-2 max-w-sm text-sm text-ink-900/60">
-                Terima kasih {form.fullName || "peserta"}, kamu sudah
-                terdaftar di {eventInfo.name} {eventInfo.year}. Gabung grup
-                WhatsApp peserta untuk info selanjutnya.
+                Terima kasih {form.fullName || "peserta"}, kamu sudah terdaftar
+                di {eventInfo.name} {eventInfo.year}. Gabung grup WhatsApp
+                peserta untuk info selanjutnya.
               </p>
 
               <a
