@@ -5,6 +5,7 @@ import Image from "next/image";
 import { FiArrowUpRight, FiExternalLink } from "react-icons/fi";
 import { Button } from "@/components/ui/button";
 import { speakers, stats } from "@/data/workshop";
+import { EncryptedText } from "../ui/encrypted-text";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 24 },
@@ -30,7 +31,12 @@ export function Mentors() {
       <div className="container relative">
         <div className="max-w-xl">
           <span className="section-heading-eyebrow inline-block rounded-full bg-clay-100 px-4 py-1.5 text-xs font-semibold text-clay-600">
-            // pembicara-pemateri
+            <EncryptedText
+              text={`// pembicara-pemateri`}
+              encryptedClassName="text-black"
+              revealedClassName="dark:text-clay-600  text-clay-600"
+              revealDelayMs={100}
+            />
           </span>
           <h2 className="mt-5 text-balance font-display text-3xl font-bold leading-tight text-ink-900 sm:text-4xl">
             Belajar langsung dari mereka yang sudah membuktikannya.

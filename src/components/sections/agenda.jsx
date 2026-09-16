@@ -2,16 +2,25 @@
 
 import { motion } from "framer-motion";
 import { agenda } from "@/data/workshop";
+import { EncryptedText } from "../ui/encrypted-text";
 
 export function Agenda() {
   return (
-    <section id="rundown" className="relative bg-ink-900 py-24 text-cream-50 sm:py-28">
+    <section
+      id="rundown"
+      className="relative bg-ink-900 py-24 text-cream-50 sm:py-28"
+    >
       <div className="grain-overlay pointer-events-none absolute inset-0 opacity-[0.05]" />
       <div className="container relative">
         <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div className="max-w-xl">
             <span className="section-heading-eyebrow inline-block rounded-full border border-cream-50/15 bg-cream-50/5 px-4 py-1.5 text-xs font-semibold text-amber-400">
-              // rundown-acara
+              <EncryptedText
+                text={`// rundown acara`}
+                encryptedClassName="text-white"
+                revealedClassName="dark:text-white text-amber-400"
+                revealDelayMs={100}
+              />
             </span>
             <h2 className="mt-5 text-balance font-display text-3xl font-bold leading-tight sm:text-4xl">
               Satu hari, tersusun rapi dari pagi sampai siang.
@@ -37,7 +46,7 @@ export function Agenda() {
               </span>
               <div className="flex flex-col gap-1 sm:flex-row sm:items-baseline sm:gap-6">
                 <span className="font-mono text-sm font-semibold text-amber-400">
-                  {item.time} WIB
+                  {item.time} WITA
                 </span>
                 <h3 className="font-display text-lg font-semibold text-cream-50 sm:text-xl">
                   {item.title}

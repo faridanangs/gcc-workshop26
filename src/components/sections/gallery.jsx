@@ -7,6 +7,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Dialog, DialogTrigger, DialogContent } from "@/components/ui/dialog";
 import { galleryPhotos, galleryVideos } from "@/data/workshop";
 import Image from "next/image";
+import { EncryptedText } from "../ui/encrypted-text";
 
 export function Gallery() {
   const [activeVideo, setActiveVideo] = useState(null);
@@ -17,7 +18,12 @@ export function Gallery() {
         <div className="flex flex-col items-start justify-between gap-6 sm:flex-row sm:items-end">
           <div className="max-w-xl">
             <span className="section-heading-eyebrow inline-block rounded-full bg-clay-100 px-4 py-1.5 text-xs font-semibold text-clay-600">
-              // dokumentasi
+              <EncryptedText
+                text={`// dokumentasi`}
+                encryptedClassName="text-black"
+                revealedClassName="dark:text-clay-600  text-clay-600"
+                revealDelayMs={100}
+              />
             </span>
             <h2 className="mt-5 text-balance font-display text-3xl font-bold leading-tight text-ink-900 sm:text-4xl">
               Keseruan Workshop dari tahun sebelumnya.

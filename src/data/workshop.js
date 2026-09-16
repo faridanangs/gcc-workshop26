@@ -87,7 +87,7 @@ export const agenda = [
   {
     time: "09.00",
     title: "Seremonial Pembukaan",
-    desc: "Pembukaan MC, lagu kebangsaan, laporan ketua panitia, dan sambutan dari Ketua Umum GCC, Pembina GCC, Kaprodi Matematika, hingga Dekan FMIPA.",
+    desc: "Pembukaan MC, kalam ilahi, lagu Indonesia Raya, hiburan pembuka, laporan ketua panitia, dan sambutan dari Ketua Umum GCC, Pembina GCC, Kaprodi Matematika, hingga Dekan FMIPA.",
   },
   {
     time: "10.05",
@@ -100,34 +100,29 @@ export const agenda = [
     desc: "Penyampaian materi \"How Computers Learn from Data\" langsung oleh pemateri.",
   },
   {
-    time: "10.50",
-    title: "Quiz Sesi 1",
-    desc: "Uji pemahaman peserta lewat kuis interaktif seputar materi webinar.",
-  },
-  {
-    time: "11.00",
+    time: "11.50",
     title: "ISHOMA",
     desc: "Istirahat, sholat, dan makan siang bersama.",
   },
   {
-    time: "11.50",
+    time: "12.55",
     title: "Workshop — Building Your First Predictive Model",
     desc: "Latihan hands-on membangun model prediktif pertamamu, dibimbing langsung oleh pemateri.",
   },
   {
-    time: "12.25",
-    title: "Quiz Sesi 2",
+    time: "14.25",
+    title: "Quiz",
     desc: "Kuis penutup sekaligus evaluasi hasil latihan peserta.",
   },
   {
-    time: "12.45",
+    time: "14.45",
     title: "Pemberian Hadiah & Sertifikasi",
-    desc: "Hadiah untuk peserta terbaik, serta penyerahan plakat dan sertifikat kepada pemateri.",
+    desc: "Hadiah untuk peserta yang menyelesaikan quiz, serta penyerahan plakat dan sertifikat kepada pemateri.",
   },
   {
-    time: "12.55",
-    title: "Hiburan & Penutupan",
-    desc: "Hiburan penutup sekaligus serah terima dari moderator ke MC untuk menutup acara.",
+    time: "14.55",
+    title: "Penutupan",
+    desc: "Peralihan dari moderator ke MC untuk menutup acara.",
   },
 ];
 

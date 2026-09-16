@@ -19,8 +19,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 
-
 import { eventInfo } from "@/data/workshop";
+import { EncryptedText } from "../ui/encrypted-text";
 
 // TODO: ganti sesuai akun & grup asli kamu
 const IG_HANDLE = "@gamatika_coding_club";
@@ -235,7 +235,12 @@ export function RegistrationForm() {
           {/* Left: info, payment & IG follow */}
           <div>
             <span className="section-heading-eyebrow inline-block rounded-full bg-clay-100 px-4 py-1.5 text-xs font-semibold text-clay-600">
-              // form-pendaftaran
+              <EncryptedText
+                text={`// form-pendaftaran`}
+                encryptedClassName="text-black"
+                revealedClassName="dark:text-clay-600  text-clay-600"
+                revealDelayMs={100}
+              />
             </span>
             <h2 className="mt-5 text-balance font-display text-3xl font-bold leading-tight text-ink-900 sm:text-4xl">
               Amankan kursimu di {eventInfo.name} {eventInfo.year}.

@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { FiHexagon } from "react-icons/fi";
 import { sponsors } from "@/data/workshop";
+import { EncryptedText } from "../ui/encrypted-text";
 
 function SponsorCard({ name, size = "md" }) {
   const sizes = {
@@ -30,14 +31,20 @@ export function Sponsors() {
       <div className="container">
         <div className="max-w-xl">
           <span className="section-heading-eyebrow inline-block rounded-full bg-clay-100 px-4 py-1.5 text-xs font-semibold text-clay-600">
-            // didukung-oleh
+            <EncryptedText
+              text={`// didukung-oleh`}
+              encryptedClassName="text-black"
+              revealedClassName="text-clay-600"
+              revealDelayMs={100}
+            />
           </span>
           <h2 className="mt-5 text-balance font-display text-2xl font-bold leading-tight text-ink-900 sm:text-4xl">
-            Terima kasih untuk mitra yang telah menandai dan menyebarkan informasi terkait acara kami
+            Terima kasih untuk mitra yang telah menandai dan menyebarkan
+            informasi terkait acara kami
           </h2>
           <p className="mt-4 text-ink-900/60">
-            GCC Workshop 2026 terselenggara berkat dukungan perusahaan dan komunitas
-            berikut ini.
+            GCC Workshop 2026 terselenggara berkat dukungan perusahaan dan
+            komunitas berikut ini.
           </p>
         </div>
 
@@ -63,7 +70,6 @@ export function Sponsors() {
               ))}
             </div>
           </div>
-
         </div>
       </div>
     </section>
