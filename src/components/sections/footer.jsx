@@ -4,9 +4,12 @@ import {
   FiYoutube,
   FiMail,
   FiMapPin,
+  FiCalendar,
+  FiClock,
 } from "react-icons/fi";
 import { eventInfo } from "@/data/workshop";
 import Image from "next/image";
+import { FaTiktok } from "react-icons/fa";
 
 export function Footer() {
   return (
@@ -32,21 +35,27 @@ export function Footer() {
               pemateri berpengalaman lewat sesi praktik yang hangat.
             </p>
             <div className="mt-5 flex gap-3">
-              
-                <a
-                  href="https://www.youtube.com/@GamatikaCoding"
-                  aria-label="Sosial media GCC"
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-cream-50/5 text-cream-100 transition-colors hover:bg-clay-500 hover:text-cream-50"
-                >
-                  <FiYoutube className="h-4 w-4" />
-                </a>
-                <a
-                  href="https://instagram.com/gamatika_coding_club"
-                  aria-label="Sosial media GCC"
-                  className="flex h-9 w-9 items-center justify-center rounded-full bg-cream-50/5 text-cream-100 transition-colors hover:bg-clay-500 hover:text-cream-50"
-                >
-                  <FiInstagram className="h-4 w-4" />
-                </a>
+              <a
+                href="https://www.youtube.com/@GamatikaCoding"
+                aria-label="Sosial media GCC"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-cream-50/5 text-cream-100 transition-colors hover:bg-clay-500 hover:text-cream-50"
+              >
+                <FiYoutube className="h-4 w-4" />
+              </a>
+              <a
+                href="https://instagram.com/gamatika_coding_club"
+                aria-label="Sosial media GCC"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-cream-50/5 text-cream-100 transition-colors hover:bg-clay-500 hover:text-cream-50"
+              >
+                <FiInstagram className="h-4 w-4" />
+              </a>
+              <a
+                href="https://instagram.com/gamatika_coding_club"
+                aria-label="Sosial media GCC"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-cream-50/5 text-cream-100 transition-colors hover:bg-clay-500 hover:text-cream-50"
+              >
+                <FaTiktok className="h-4 w-4" />
+              </a>
             </div>
           </div>
 
@@ -88,13 +97,17 @@ export function Footer() {
               Kontak panitia
             </p> */}
             <ul className="mt-4 space-y-3 text-sm text-cream-100/70">
-              {/* <li className="flex items-start gap-2.5">
-                <FiMail className="mt-0.5 h-4 w-4 shrink-0 text-clay-500" />
-                halo@gccworkshop.id
-              </li> */}
               <li className="flex items-start gap-2.5">
                 <FiMapPin className="mt-0.5 h-4 w-4 shrink-0 text-clay-500" />
                 {eventInfo.location}
+              </li>
+              <li className="flex items-start gap-2.5">
+                <FiCalendar className="mt-0.5 h-4 w-4 shrink-0 text-clay-500" />
+                {eventInfo.date}
+              </li>
+              <li className="flex items-start gap-2.5">
+                <FiClock className="mt-0.5 h-4 w-4 shrink-0 text-clay-500" />
+                {eventInfo.time}
               </li>
             </ul>
           </div>

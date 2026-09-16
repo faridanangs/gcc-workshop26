@@ -43,12 +43,16 @@ export function Hero() {
             initial="hidden"
             animate="show"
             custom={0}
-            className="section-heading-eyebrow mb-6 inline-flex items-center rounded-full border border-cream-50/15 bg-cream-50/5 px-3 py-2 text-xs"
+            className="section-heading-eyebrow mb-6 inline-flex items-center gap-2.5 rounded-full border border-cream-50/15 bg-cream-50/5 px-4 py-2 text-xs"
           >
+            <span className="relative flex h-1.5 w-1.5">
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75" />
+              <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber-400" />
+            </span>
             <EncryptedText
-              text={`$ workshop gamatika-coding-club 2026`}
+              text={`GAMATIKA CODING CLUB`}
               encryptedClassName="text-white"
-              revealedClassName="dark:text-white  text-amber-400"
+              revealedClassName="dark:text-white text-amber-400"
               revealDelayMs={100}
             />
           </motion.p>
@@ -58,16 +62,16 @@ export function Hero() {
             initial="hidden"
             animate="show"
             custom={1}
-            className="text-balance font-display text-[2.1rem] font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-[4.2rem]"
+            className="text-balance font-display text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl lg:text-[3rem]"
           >
-            Dari data,
+            Introduction to Data Science and
             <br />
-            menuju{" "}
-            <span className="relative inline-block text-clay-500">
-              prediksi.
+            Machine Learning:
+            <span className="relative mt-1 md:mt-3 block text-clay-500  md:text-[2.7rem]">
+              From Data to Prediction.
               <svg
                 viewBox="0 0 200 14"
-                className="absolute -bottom-2 left-0 w-full text-amber-500"
+                className="absolute md:-bottom-9 left-0 w-full text-amber-500"
                 preserveAspectRatio="none"
               >
                 <path
@@ -86,13 +90,10 @@ export function Hero() {
             initial="hidden"
             animate="show"
             custom={2}
-            className="mt-6 max-w-lg text-balance font-body text-base leading-relaxed text-cream-100/70 sm:text-lg"
+            className="mt-9 max-w-lg text-balance font-body text-base leading-relaxed text-cream-100/70 sm:text-lg"
           >
-            {eventInfo.edition} workshop tahunan {eventInfo.tagline} bertema{" "}
-            <span className="text-cream-50">
-              Data Science &amp; Machine Learning
-            </span>{" "}
-            — mulai dari konsep dasar di sesi webinar, sampai praktik langsung
+            {eventInfo.edition} workshop tahunan {eventInfo.tagline}.
+            Mulai dari konsep dasar di sesi webinar, sampai praktik langsung
             membangun model prediksi pertamamu bareng pemateri berpengalaman.
           </motion.p>
 

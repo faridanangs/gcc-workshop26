@@ -32,8 +32,8 @@ export function Sponsors() {
           <span className="section-heading-eyebrow inline-block rounded-full bg-clay-100 px-4 py-1.5 text-xs font-semibold text-clay-600">
             // didukung-oleh
           </span>
-          <h2 className="mt-5 text-balance font-display text-3xl font-bold leading-tight text-ink-900 sm:text-4xl">
-            Terima kasih untuk mitra yang mendanai acara ini.
+          <h2 className="mt-5 text-balance font-display text-2xl font-bold leading-tight text-ink-900 sm:text-4xl">
+            Terima kasih untuk mitra yang telah menandai dan menyebarkan informasi terkait acara kami
           </h2>
           <p className="mt-4 text-ink-900/60">
             GCC Workshop 2026 terselenggara berkat dukungan perusahaan dan komunitas
@@ -47,8 +47,8 @@ export function Sponsors() {
               Sponsor
             </p>
             <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
-              {sponsors.platinum.map((s) => (
-                <SponsorCard key={s.name} name={s.name} size="lg" />
+              {sponsors.sponsor.map((s, i) => (
+                <SponsorCard key={i} name={s.name} size="lg" />
               ))}
             </div>
           </div>
@@ -58,8 +58,8 @@ export function Sponsors() {
               Media Partner
             </p>
             <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-              {sponsors.gold.map((s) => (
-                <SponsorCard key={s.name} name={s.name} size="md" />
+              {sponsors.partner.map((s, i) => (
+                <SponsorCard key={i} name={s.name} size="md" />
               ))}
             </div>
           </div>

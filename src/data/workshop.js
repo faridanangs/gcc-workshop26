@@ -140,24 +140,12 @@ export const tracks = [
 ];
 
 export const sponsors = {
-  platinum: [{ name: "Nusantara Cloud" }, { name: "Awan Digital" }],
-  gold: [
+  sponsor: [{ name: "Open Sponsorship" }, { name: "Open Sponsorship" }],
+  partner: [
     { name: "Kopi & Koding" },
     { name: "DevHive Studio" },
     { name: "Bit Sembilan" },
-  ],
-  silver: [
-    { name: "Ruang Kerja" },
-    { name: "Sinergi Teknologi" },
-    { name: "Kertas Kerja" },
-    { name: "Warna Digital" },
-  ],
-  community: [
-    { name: "Komunitas Kode Lokal" },
-    { name: "Himpunan Developer Muda" },
-    { name: "UMKM Digital Hub" },
-    { name: "Radio Kampus FM" },
-  ],
+  ]
 };
 
 export const testimonials = [
@@ -211,9 +199,9 @@ export const speakers = [
     name: "Tri Maryono Rusadi, M.Si",
     role: "Dosen",
     institution: "Universitas Mataram (UNRAM)",
-    bio: "Mengajar dan aktif membina mahasiswa di bidang ilmu komputer, dengan fokus pada pengembangan perangkat lunak dan pembelajaran pemrograman yang aplikatif.",
+    bio: "Tri Maryono Rusadi, M.Si. merupakan akademisi dan dosen Matematika di Universitas Mataram dengan keahlian di bidang Computational Mathematics. Beliau aktif dalam riset dan pengembangan teknologi berbasis matematika komputasi, kecerdasan buatan (Machine Learning/Deep Learning), serta optimasi sistem. Hingga kini, beliau telah menghasilkan berbagai publikasi ilmiah dan hak cipta karya cipta di bidang pemodelan dan aplikasi komputasi.",
     quote: "Belajar itu bukan soal secepat apa kamu paham, tapi seberani apa kamu mulai.",
-    tags: ["Data Sciences", "Basis Data", "Machine Learning"],
+    tags: ["Data Sciences", "Neural Networks", "Basis Data", "Machine Learning"],
     photo: "/images/pak_tri.png",
     portfolioUrl: "#", // TODO: ganti dengan profil/portofolio asli
     portfolioLabel: "CV",
