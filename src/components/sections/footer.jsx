@@ -50,7 +50,7 @@ export function Footer() {
                 <FiInstagram className="h-4 w-4" />
               </a>
               <a
-                href="https://instagram.com/gamatika_coding_club"
+                href="https://www.tiktok.com/@gamatika_coding_club"
                 aria-label="Sosial media GCC"
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-cream-50/5 text-cream-100 transition-colors hover:bg-clay-500 hover:text-cream-50"
               >
