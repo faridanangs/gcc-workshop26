@@ -1,6 +1,7 @@
 import { Unbounded, Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner";
+import { eventInfo } from "@/data/workshop";
 
 const unbounded = Unbounded({
   subsets: ["latin"],
@@ -24,14 +25,16 @@ const jbmono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "GCC Workshop 2026 — Growth Coding Community",
-  description:
-    "Workshop coding tahunan Growth Coding Community. Belajar langsung praktik bareng pemateri industri, edisi ke-2, 14 November 2026 di Surabaya.",
+  title: `${eventInfo.name} ${eventInfo.year} — ${eventInfo.tagline}`,
+  description: `Workshop tahunan ${eventInfo.tagline}, ${eventInfo.edition}. Tema "${eventInfo.theme}" — belajar langsung praktik bareng pemateri. ${eventInfo.date}, ${eventInfo.location}.`,
   keywords: [
     "GCC Workshop",
-    "Growth Coding Community",
-    "workshop coding 2026",
-    "belajar coding Surabaya",
+    "Gamatika Coding Club",
+    `workshop coding ${eventInfo.year}`,
+    "Data Science",
+    "Machine Learning",
+    "workshop coding Mataram",
+    "Universitas Mataram",
   ],
 };
 

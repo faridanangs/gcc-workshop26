@@ -18,20 +18,14 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
-import {
-  Select,
-  SelectTrigger,
-  SelectValue,
-  SelectContent,
-  SelectItem,
-} from "@/components/ui/select";
+
 
 import { eventInfo } from "@/data/workshop";
 
 // TODO: ganti sesuai akun & grup asli kamu
 const IG_HANDLE = "@gamatika_coding_club";
 const IG_URL = "https://instagram.com/gamatika_coding_club";
-const WA_GROUP_LINK = "https://chat.whatsapp.com/GANTI-DENGAN-LINK-GRUP-ASLI";
+const WA_GROUP_LINK = "https://chat.whatsapp.com/KuxKmPfvGDsLdTLK0vgIL3";
 
 const data_bank = [
   {
@@ -97,7 +91,15 @@ export function RegistrationForm() {
     });
   };
 
-  const handleSubmit = (e) => {
+  const fileToBase64 = (file) =>
+    new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = () => resolve(reader.result);
+      reader.onerror = reject;
+      reader.readAsDataURL(file);
+    });
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!form.agree) {
@@ -120,14 +122,47 @@ export function RegistrationForm() {
     }
 
     setSubmitting(true);
-    setTimeout(() => {
+    try {
+      const [igBase64, paymentBase64] = await Promise.all([
+        fileToBase64(igProof),
+        fileToBase64(paymentProof),
+      ]);
+
+      const res = await fetch("/api/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          fullName: form.fullName,
+          whatsapp: form.whatsapp,
+          email: form.email,
+          institution: form.institution,
+          motivation: form.motivation,
+          igProof: { base64: igBase64, type: igProof.type, name: igProof.name },
+          paymentProof: {
+            base64: paymentBase64,
+            type: paymentProof.type,
+            name: paymentProof.name,
+          },
+        }),
+      });
+
+      const result = await res.json();
+      if (!res.ok || result.error) {
+        throw new Error(result.error || "Gagal mengirim pendaftaran");
+      }
+
       setSubmitting(false);
       setSubmitted(true);
       toast.success("Pendaftaran berhasil dikirim!", {
         description: `Terima kasih ${form.fullName || "peserta"}, sudah mendaftar di ${eventInfo.name} ${eventInfo.year}.`,
         icon: <FiCheckCircle className="h-4 w-4" />,
       });
-    }, 1600);
+    } catch (err) {
+      setSubmitting(false);
+      toast.error("Pendaftaran gagal dikirim", {
+        description: err.message || "Coba lagi beberapa saat lagi.",
+      });
+    }
   };
 
   const handleRegisterAnother = () => {
