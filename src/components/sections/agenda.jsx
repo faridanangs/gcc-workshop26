@@ -16,7 +16,7 @@ export function Agenda() {
           <div className="max-w-xl">
             <span className="section-heading-eyebrow inline-block rounded-full border border-cream-50/15 bg-cream-50/5 px-4 py-1.5 text-xs font-semibold text-amber-400">
               <EncryptedText
-                text={`// rundown acara`}
+                text={`rundown acara`}
                 encryptedClassName="text-white"
                 revealedClassName="dark:text-white text-amber-400"
                 revealDelayMs={100}

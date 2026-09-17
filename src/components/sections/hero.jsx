@@ -50,7 +50,7 @@ export function Hero() {
               <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber-400" />
             </span>
             <EncryptedText
-              text={`$ GAMATIKA CODING CLUB`}
+              text={`GAMATIKA CODING CLUB`}
               encryptedClassName="text-white"
               revealedClassName="dark:text-white text-amber-400"
               revealDelayMs={100}

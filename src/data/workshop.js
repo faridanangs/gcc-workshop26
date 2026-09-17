@@ -137,9 +137,9 @@ export const tracks = [
 export const sponsors = {
   sponsor: [{ name: "Open Sponsorship" }, { name: "Open Sponsorship" }],
   partner: [
-    { name: "Open Partner" },
-    { name: "Open Partner" },
-    { name: "Open Partner" },
+    { name: "Open Partnership" },
+    { name: "Open Partnership" },
+    { name: "Open Partnership" },
   ]
 };
 

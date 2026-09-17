@@ -236,7 +236,7 @@ export function RegistrationForm() {
           <div>
             <span className="section-heading-eyebrow inline-block rounded-full bg-clay-100 px-4 py-1.5 text-xs font-semibold text-clay-600">
               <EncryptedText
-                text={`// form-pendaftaran`}
+                text={`form-pendaftaran`}
                 encryptedClassName="text-black"
                 revealedClassName="dark:text-clay-600  text-clay-600"
                 revealDelayMs={100}

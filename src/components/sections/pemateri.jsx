@@ -32,7 +32,7 @@ export function Mentors() {
         <div className="max-w-xl">
           <span className="section-heading-eyebrow inline-block rounded-full bg-clay-100 px-4 py-1.5 text-xs font-semibold text-clay-600">
             <EncryptedText
-              text={`// pembicara-pemateri`}
+              text={`pembicara-pemateri`}
               encryptedClassName="text-black"
               revealedClassName="dark:text-clay-600  text-clay-600"
               revealDelayMs={100}

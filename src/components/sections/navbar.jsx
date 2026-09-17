@@ -12,6 +12,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { eventInfo } from "@/data/workshop";
 import Image from "next/image";
+import { EncryptedText } from "../ui/encrypted-text";
 
 const NAV_LINKS = [
   // { href: "#tentang", label: "Tentang" },
@@ -188,11 +189,15 @@ export function Navbar() {
                 {/* Header */}
                 <div className="mb-8 flex items-center justify-between">
                   <div className="flex items-center gap-2.5">
-                           <span
-            className={`clay-stamp h-10 w-10 border-2 font-display text-sm font-bold relative ${ "border-ink-900 bg-white text-cream-50"}`}
-          >
-            <Image src="/images/logo.png" alt="Growth Coding Logo" fill />
-          </span>
+                    <span
+                      className={`clay-stamp h-10 w-10 border-2 font-display text-sm font-bold relative ${"border-ink-900 bg-white text-cream-50"}`}
+                    >
+                      <Image
+                        src="/images/logo.png"
+                        alt="Growth Coding Logo"
+                        fill
+                      />
+                    </span>
                     <span className="font-display text-sm font-bold leading-tight text-ink-900">
                       {eventInfo.name}
                       <span className="block font-mono text-[10px] font-medium tracking-wide text-ink-900/50">
@@ -212,8 +217,13 @@ export function Navbar() {
                   </motion.button>
                 </div>
 
-                <p className="section-heading-eyebrow terminal-caret mb-4 text-[11px] text-clay-500">
-                  $ menu --navigasi
+                <p className="section-heading-eyebrow mb-4 text-[16px] text-clay-500">
+                  <EncryptedText
+                    text={`menu navigasi`}
+                    encryptedClassName="text-black"
+                    revealedClassName="text-clay-600"
+                    revealDelayMs={100}
+                  />
                 </p>
 
                 {/* Nav links */}
