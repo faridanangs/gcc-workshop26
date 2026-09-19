@@ -21,6 +21,7 @@ import { Textarea } from "@/components/ui/textarea";
 
 import { eventInfo } from "@/data/workshop";
 import { EncryptedText } from "../ui/encrypted-text";
+import { getRegistrationUploadSignature } from "../actions/cloudinary";
 
 // TODO: ganti sesuai akun & grup asli kamu
 const IG_HANDLE = "@gamatika_coding_club";
@@ -91,13 +92,36 @@ export function RegistrationForm() {
     });
   };
 
-  const fileToBase64 = (file) =>
-    new Promise((resolve, reject) => {
-      const reader = new FileReader();
-      reader.onload = () => resolve(reader.result);
-      reader.onerror = reject;
-      reader.readAsDataURL(file);
-    });
+  const uploadToCloudinary = async (file, folder) => {
+    const sig = await getRegistrationUploadSignature(folder);
+    if (!sig.success) {
+      throw new Error(sig.message || "Gagal mendapatkan izin unggah.");
+    }
+    const { signature, timestamp, apiKey, cloudName, uploadPreset } = sig.data;
+
+    const formData = new FormData();
+    formData.append("file", file);
+    formData.append("api_key", apiKey);
+    formData.append("timestamp", timestamp);
+    formData.append("signature", signature);
+    formData.append("folder", folder);
+    formData.append("upload_preset", uploadPreset);
+
+    const res = await fetch(
+      `https://api.cloudinary.com/v1_1/${cloudName}/auto/upload`,
+      { method: "POST", body: formData },
+    );
+
+    if (!res.ok) {
+      const errData = await res.json().catch(() => null);
+      throw new Error(
+        errData?.error?.message || "Gagal mengunggah file ke Cloudinary",
+      );
+    }
+
+    const data = await res.json();
+    return data.secure_url;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -123,9 +147,9 @@ export function RegistrationForm() {
 
     setSubmitting(true);
     try {
-      const [igBase64, paymentBase64] = await Promise.all([
-        fileToBase64(igProof),
-        fileToBase64(paymentProof),
+      const [igProofUrl, paymentProofUrl] = await Promise.all([
+        uploadToCloudinary(igProof, "workshop-registration/ig-proof"),
+        uploadToCloudinary(paymentProof, "workshop-registration/payment-proof"),
       ]);
 
       const res = await fetch("/api/register", {
@@ -137,12 +161,8 @@ export function RegistrationForm() {
           email: form.email,
           institution: form.institution,
           motivation: form.motivation,
-          igProof: { base64: igBase64, type: igProof.type, name: igProof.name },
-          paymentProof: {
-            base64: paymentBase64,
-            type: paymentProof.type,
-            name: paymentProof.name,
-          },
+          igProofUrl,
+          paymentProofUrl,
         }),
       });
 
