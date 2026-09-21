@@ -12,6 +12,8 @@ import {
   FiX,
   FiArrowRight,
   FiMessageCircle,
+  FiMapPin,
+  FiCreditCard,
 } from "react-icons/fi";
 import { FaInstagram } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
@@ -27,6 +29,9 @@ import { getRegistrationUploadSignature } from "../actions/cloudinary";
 const IG_HANDLE = "@gamatika_coding_club";
 const IG_URL = "https://instagram.com/gamatika_coding_club";
 const WA_GROUP_LINK = "https://chat.whatsapp.com/KuxKmPfvGDsLdTLK0vgIL3";
+
+const OFFLINE_PAYMENT_LOCATION =
+  "Fakultas MIPA Universitas Mataram, depan ruang kelas A.1.6 (MEHIBUN)";
 
 const data_bank = [
   {
@@ -47,6 +52,7 @@ const initialForm = {
   email: "",
   institution: "",
   motivation: "",
+  paymentMethod: "online", // "online" | "offline"
   agree: false,
 };
 
@@ -64,6 +70,16 @@ export function RegistrationForm() {
 
   const updateField = (key, value) =>
     setForm((prev) => ({ ...prev, [key]: value }));
+
+  const selectPaymentMethod = (method) => {
+    updateField("paymentMethod", method);
+    // Kalau pindah ke offline, bukti bayar yang mungkin sudah dipilih
+    // nggak relevan lagi — bersihin biar nggak nyangkut.
+    if (method === "offline") {
+      setPaymentProof(null);
+      if (paymentInputRef.current) paymentInputRef.current.value = "";
+    }
+  };
 
   const handleFileChange = (e, setter, label) => {
     const selected = e.target.files?.[0];
@@ -132,7 +148,7 @@ export function RegistrationForm() {
       });
       return;
     }
-    if (!paymentProof) {
+    if (form.paymentMethod === "online" && !paymentProof) {
       toast.error("Bukti pembayaran belum diunggah", {
         description: "Unggah screenshot atau foto bukti transfer kamu.",
       });
@@ -147,10 +163,21 @@ export function RegistrationForm() {
 
     setSubmitting(true);
     try {
-      const [igProofUrl, paymentProofUrl] = await Promise.all([
+      const uploadTasks = [
         uploadToCloudinary(igProof, "workshop-registration/ig-proof"),
-        uploadToCloudinary(paymentProof, "workshop-registration/payment-proof"),
-      ]);
+      ];
+      if (form.paymentMethod === "online") {
+        uploadTasks.push(
+          uploadToCloudinary(paymentProof, "workshop-registration/payment-proof"),
+        );
+      }
+
+      const uploadResults = await Promise.all(uploadTasks);
+      const igProofUrl = uploadResults[0];
+      const paymentProofUrl =
+        form.paymentMethod === "online"
+          ? uploadResults[1]
+          : `Offline - bayar langsung di lokasi (${OFFLINE_PAYMENT_LOCATION})`;
 
       const res = await fetch("/api/register", {
         method: "POST",
@@ -161,6 +188,7 @@ export function RegistrationForm() {
           email: form.email,
           institution: form.institution,
           motivation: form.motivation,
+          paymentMethod: form.paymentMethod,
           igProofUrl,
           paymentProofUrl,
         }),
@@ -266,12 +294,12 @@ export function RegistrationForm() {
               Amankan kursimu di {eventInfo.name} {eventInfo.year}.
             </h2>
             <p className="mt-4 text-ink-900/60">
-              Kuota terbatas. Lengkapi data diri, transfer biaya pendaftaran,
-              follow Instagram GAMATIKA Coding Club, lalu unggah kedua buktinya
+              Kuota terbatas. Lengkapi data diri, pilih metode pembayaran,
+              follow Instagram GAMATIKA Coding Club, lalu unggah buktinya
               di form pendaftaran.
             </p>
 
-            {/* Payment panel */}
+            {/* Payment panel — hanya menampilkan info, pilihan metode ada di form */}
             <div className="mt-8 rounded-2xl border-2 border-ink-900/10 bg-cream-50 p-6">
               <p className="font-mono text-xs uppercase tracking-wide text-ink-900/45">
                 Biaya Pendaftaran Hanya
@@ -280,46 +308,62 @@ export function RegistrationForm() {
                 {eventInfo.price}
               </p>
 
-              {/* Pilih metode pembayaran */}
-              <div className="mt-5 flex gap-2">
-                {data_bank.map((v, i) => (
-                  <button
-                    key={v.name}
-                    type="button"
-                    onClick={() => setSelectedBankIndex(i)}
-                    className={`flex-1 rounded-lg border-2 px-3 py-2 text-sm font-semibold transition-colors ${
-                      selectedBankIndex === i
-                        ? "border-clay-500 bg-clay-500 text-cream-50"
-                        : "border-ink-900/12 bg-cream-100/60 text-ink-900/55 hover:border-clay-500/40 hover:text-ink-900"
-                    }`}
-                  >
-                    {v.name}
-                  </button>
-                ))}
-              </div>
+              {form.paymentMethod === "online" ? (
+                <>
+                  {/* Pilih bank/akun tujuan transfer */}
+                  <div className="mt-5 flex gap-2">
+                    {data_bank.map((v, i) => (
+                      <button
+                        key={v.name}
+                        type="button"
+                        onClick={() => setSelectedBankIndex(i)}
+                        className={`flex-1 rounded-lg border-2 px-3 py-2 text-sm font-semibold transition-colors ${
+                          selectedBankIndex === i
+                            ? "border-clay-500 bg-clay-500 text-cream-50"
+                            : "border-ink-900/12 bg-cream-100/60 text-ink-900/55 hover:border-clay-500/40 hover:text-ink-900"
+                        }`}
+                      >
+                        {v.name}
+                      </button>
+                    ))}
+                  </div>
 
-              {/* Nomor rekening/akun yang dipilih */}
-              <div className="mt-3 flex items-center justify-between rounded-xl bg-ink-900 px-4 py-3.5">
-                <div>
-                  <p className="text-xs text-cream-100/55">
-                    Transfer ke {data_bank[selectedBankIndex].name}
-                  </p>
-                  <p className="mt-0.5 font-mono text-base font-semibold text-cream-50">
-                    {data_bank[selectedBankIndex].bank_account}
-                  </p>
-                  <p className="text-xs text-cream-100/55">
-                    {data_bank[selectedBankIndex].account_name}
-                  </p>
+                  {/* Nomor rekening/akun yang dipilih */}
+                  <div className="mt-3 flex items-center justify-between rounded-xl bg-ink-900 px-4 py-3.5">
+                    <div>
+                      <p className="text-xs text-cream-100/55">
+                        Transfer ke {data_bank[selectedBankIndex].name}
+                      </p>
+                      <p className="mt-0.5 font-mono text-base font-semibold text-cream-50">
+                        {data_bank[selectedBankIndex].bank_account}
+                      </p>
+                      <p className="text-xs text-cream-100/55">
+                        {data_bank[selectedBankIndex].account_name}
+                      </p>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={copyAccount}
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cream-50/10 text-cream-50 transition-colors hover:bg-clay-500"
+                      aria-label={`Salin nomor ${data_bank[selectedBankIndex].name}`}
+                    >
+                      <FiCopy className="h-4 w-4" />
+                    </button>
+                  </div>
+                </>
+              ) : (
+                <div className="mt-5 flex items-start gap-3 rounded-xl bg-ink-900 px-4 py-3.5">
+                  <FiMapPin className="mt-0.5 h-5 w-5 shrink-0 text-clay-400" />
+                  <div>
+                    <p className="text-xs text-cream-100/55">
+                      Bayar langsung di lokasi
+                    </p>
+                    <p className="mt-0.5 text-sm font-semibold leading-relaxed text-cream-50">
+                      {OFFLINE_PAYMENT_LOCATION}
+                    </p>
+                  </div>
                 </div>
-                <button
-                  type="button"
-                  onClick={copyAccount}
-                  className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-cream-50/10 text-cream-50 transition-colors hover:bg-clay-500"
-                  aria-label={`Salin nomor ${data_bank[selectedBankIndex].name}`}
-                >
-                  <FiCopy className="h-4 w-4" />
-                </button>
-              </div>
+              )}
 
               <p className="mt-4 text-xs leading-relaxed text-ink-900/90">
                 Sudah termasuk modul digital, snack &amp; makan siang,
@@ -455,15 +499,53 @@ export function RegistrationForm() {
                 </div>
 
                 <div className="sm:col-span-2">
-                  <Label>Bukti pembayaran*</Label>
-                  {renderFileField({
-                    id: "paymentProof",
-                    label: "bukti pembayaran",
-                    file: paymentProof,
-                    setFile: setPaymentProof,
-                    inputRef: paymentInputRef,
-                    helperText: "Klik untuk unggah bukti transfer",
-                  })}
+                  <Label>Metode &amp; Bukti Pembayaran*</Label>
+
+                  {/* Pilih metode pembayaran — dipindah ke sini sesuai revisi */}
+                  <div className="mt-2 flex gap-2">
+                    <button
+                      type="button"
+                      onClick={() => selectPaymentMethod("online")}
+                      className={`flex flex-1 items-center justify-center gap-2 rounded-lg border-2 px-3 py-2 text-sm font-semibold transition-colors ${
+                        form.paymentMethod === "online"
+                          ? "border-clay-500 bg-clay-500 text-cream-50"
+                          : "border-ink-900/12 bg-cream-100/60 text-ink-900/55 hover:border-clay-500/40 hover:text-ink-900"
+                      }`}
+                    >
+                      <FiCreditCard className="h-4 w-4" />
+                      Online
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => selectPaymentMethod("offline")}
+                      className={`flex flex-1 items-center justify-center gap-2 rounded-lg border-2 px-3 py-2 text-sm font-semibold transition-colors ${
+                        form.paymentMethod === "offline"
+                          ? "border-clay-500 bg-clay-500 text-cream-50"
+                          : "border-ink-900/12 bg-cream-100/60 text-ink-900/55 hover:border-clay-500/40 hover:text-ink-900"
+                      }`}
+                    >
+                      <FiMapPin className="h-4 w-4" />
+                      Offline
+                    </button>
+                  </div>
+
+                  {form.paymentMethod === "online" ? (
+                    renderFileField({
+                      id: "paymentProof",
+                      label: "bukti pembayaran",
+                      file: paymentProof,
+                      setFile: setPaymentProof,
+                      inputRef: paymentInputRef,
+                      helperText: "Klik untuk unggah bukti transfer",
+                    })
+                  ) : (
+                    <div className="mt-2 flex items-start gap-3 rounded-xl border-2 border-dashed border-ink-900/15 bg-cream-100/50 px-4 py-4">
+                      <FiMapPin className="mt-0.5 h-5 w-5 shrink-0 text-clay-500" />
+                      <p className="text-sm leading-relaxed text-ink-900/60">
+                        Bayar langsung di {OFFLINE_PAYMENT_LOCATION}.
+                      </p>
+                    </div>
+                  )}
                 </div>
 
                 <div className="flex items-start gap-3 sm:col-span-2">
