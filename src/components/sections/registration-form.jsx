@@ -162,23 +162,44 @@ export function RegistrationForm() {
     }
 
     setSubmitting(true);
+
+    let igProofUrl;
+    let paymentProofUrl;
+
+    // Step 1: upload bukti follow IG
     try {
-      const uploadTasks = [
-        uploadToCloudinary(igProof, "workshop-registration/ig-proof"),
-      ];
-      if (form.paymentMethod === "online") {
-        uploadTasks.push(
-          uploadToCloudinary(paymentProof, "workshop-registration/payment-proof"),
+      igProofUrl = await uploadToCloudinary(
+        igProof,
+        "workshop-registration/ig-proof",
+      );
+    } catch (err) {
+      setSubmitting(false);
+      toast.error("Gagal upload bukti follow Instagram", {
+        description: err.message || "Coba lagi beberapa saat lagi.",
+      });
+      return;
+    }
+
+    // Step 2: upload bukti pembayaran (kalau online)
+    if (form.paymentMethod === "online") {
+      try {
+        paymentProofUrl = await uploadToCloudinary(
+          paymentProof,
+          "workshop-registration/payment-proof",
         );
+      } catch (err) {
+        setSubmitting(false);
+        toast.error("Gagal upload bukti pembayaran", {
+          description: err.message || "Coba lagi beberapa saat lagi.",
+        });
+        return;
       }
+    } else {
+      paymentProofUrl = `Offline - bayar langsung di lokasi (${OFFLINE_PAYMENT_LOCATION})`;
+    }
 
-      const uploadResults = await Promise.all(uploadTasks);
-      const igProofUrl = uploadResults[0];
-      const paymentProofUrl =
-        form.paymentMethod === "online"
-          ? uploadResults[1]
-          : `Offline - bayar langsung di lokasi (${OFFLINE_PAYMENT_LOCATION})`;
-
+    // Step 3: kirim data ke /api/register
+    try {
       const res = await fetch("/api/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
@@ -194,23 +215,26 @@ export function RegistrationForm() {
         }),
       });
 
-      const result = await res.json();
-      if (!res.ok || result.error) {
-        throw new Error(result.error || "Gagal mengirim pendaftaran");
+      const result = await res.json().catch(() => null);
+      if (!res.ok || result?.error) {
+        throw new Error(
+          result?.error || "Gagal mengirim data pendaftaran ke server.",
+        );
       }
-
-      setSubmitting(false);
-      setSubmitted(true);
-      toast.success("Pendaftaran berhasil dikirim!", {
-        description: `Terima kasih ${form.fullName || "peserta"}, sudah mendaftar di ${eventInfo.name} ${eventInfo.year}.`,
-        icon: <FiCheckCircle className="h-4 w-4" />,
-      });
     } catch (err) {
       setSubmitting(false);
-      toast.error("Pendaftaran gagal dikirim", {
+      toast.error("Gagal mengirim pendaftaran", {
         description: err.message || "Coba lagi beberapa saat lagi.",
       });
+      return;
     }
+
+    setSubmitting(false);
+    setSubmitted(true);
+    toast.success("Pendaftaran berhasil dikirim!", {
+      description: `Terima kasih ${form.fullName || "peserta"}, sudah mendaftar di ${eventInfo.name} ${eventInfo.year}.`,
+      icon: <FiCheckCircle className="h-4 w-4" />,
+    });
   };
 
   const handleRegisterAnother = () => {
@@ -295,8 +319,8 @@ export function RegistrationForm() {
             </h2>
             <p className="mt-4 text-ink-900/60">
               Kuota terbatas. Lengkapi data diri, pilih metode pembayaran,
-              follow Instagram GAMATIKA Coding Club, lalu unggah buktinya
-              di form pendaftaran.
+              follow Instagram GAMATIKA Coding Club, lalu unggah buktinya di
+              form pendaftaran.
             </p>
 
             {/* Payment panel — hanya menampilkan info, pilihan metode ada di form */}
