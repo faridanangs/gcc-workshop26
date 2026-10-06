@@ -8,7 +8,7 @@ export const eventInfo = {
   workshopTitle: "Building Your First Predictive Model: A Beginner's Guide to DS",
   date: "Sabtu, 24 Oktober 2026",
   time: "08.00 - 15.05 WITA",
-  location: "Aula MIPA, Universitas Mataram",
+  location: "Aula Lantai 3, Gedung MIPA, Universitas Mataram",
   price: "Rp 35.000",
 };
 

@@ -98,16 +98,16 @@ export function Footer() {
             </p> */}
             <ul className="mt-4 space-y-3 text-sm text-cream-100/70">
               <li className="flex items-start gap-2.5">
-                <FiMapPin className="mt-0.5 h-4 w-4 shrink-0 text-clay-500" />
-                {eventInfo.location}
-              </li>
-              <li className="flex items-start gap-2.5">
                 <FiCalendar className="mt-0.5 h-4 w-4 shrink-0 text-clay-500" />
                 {eventInfo.date}
               </li>
               <li className="flex items-start gap-2.5">
                 <FiClock className="mt-0.5 h-4 w-4 shrink-0 text-clay-500" />
                 {eventInfo.time}
+              </li>
+              <li className="flex items-start gap-2.5">
+                <FiMapPin className="mt-0.5 h-4 w-4 shrink-0 text-clay-500" />
+                {eventInfo.location}
               </li>
             </ul>
           </div>
