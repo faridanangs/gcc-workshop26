@@ -39,12 +39,10 @@ export function Sponsors() {
             />
           </span>
           <h2 className="mt-5 text-balance font-display text-2xl font-bold leading-tight text-ink-900 sm:text-4xl">
-            Terima kasih untuk mitra yang telah menandai dan menyebarkan
-            informasi terkait acara kami
+            Terima kasih untuk mitra yang telah menandai acara kami
           </h2>
           <p className="mt-4 text-ink-900/60">
-            GCC Workshop 2026 terselenggara berkat dukungan perusahaan dan
-            komunitas berikut ini.
+            GCC Workshop 2026 terselenggara berkat dukungan perusahaan berikut ini.
           </p>
         </div>
 
@@ -60,7 +58,7 @@ export function Sponsors() {
             </div>
           </div>
 
-          <div>
+          {/* <div>
             <p className="mb-4 font-mono text-xs font-semibold uppercase tracking-wide text-clay-600">
               Media Partner
             </p>
@@ -69,7 +67,7 @@ export function Sponsors() {
                 <SponsorCard key={i} name={s.name} size="md" />
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>
