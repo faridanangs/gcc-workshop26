@@ -59,7 +59,7 @@ export async function generateMetadata({ searchParams }) {
   }
 
   // Link ke halaman store secara umum: /store
-  const title = "Store GCC Workshop";
+  const title = "GCC Workshop Store — Merchandise & Produk";
   const description = `Merchandise dan produk dari sponsor. Ambil di ${storeConfig.pickupPoint} atau COD/QRIS, pesan lewat WhatsApp.`;
   const cover = firstProductImage();
 

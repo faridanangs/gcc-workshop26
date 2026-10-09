@@ -43,7 +43,10 @@ const fadeUp = {
 
 // Baris info (gaya sama dengan baris tanggal/jam/lokasi di Hero)
 const metaItems = [
-  { icon: FiMapPin, label: `Ambil di ${storeConfig.pickupPoint}, gratis ongkir` },
+  {
+    icon: FiMapPin,
+    label: `Ambil di ${storeConfig.pickupPoint}, gratis ongkir`,
+  },
   {
     icon: FiTruck,
     label: `COD / QRIS ${formatRupiah(storeConfig.shippingPerKm)} per km`,
@@ -127,10 +130,11 @@ export function Store() {
                 <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber-400" />
               </span>
               <EncryptedText
-                text={`GAMATIKA CODING CLUB`}
+                text="GAMATIKA CODING CLUB"
                 encryptedClassName="text-white"
                 revealedClassName="dark:text-white text-amber-400"
                 revealDelayMs={100}
+                viewMargin="0px"
               />
             </motion.p>
 
@@ -142,7 +146,6 @@ export function Store() {
               className="text-balance font-display text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl lg:text-[3rem]"
             >
               Workshop Store:
-            
             </motion.h1>
 
             <motion.div
@@ -159,8 +162,6 @@ export function Store() {
               ))}
             </motion.div>
           </div>
-
-       
         </div>
       </section>
 
