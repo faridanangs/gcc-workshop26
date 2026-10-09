@@ -16,6 +16,7 @@ import { EncryptedText } from "../ui/encrypted-text";
 
 const NAV_LINKS = [
   // { href: "#tentang", label: "Tentang" },
+  { href: "/store", label: "Store" },
   { href: "#rundown", label: "Rundown" },
   { href: "#galeri", label: "Galeri" },
   { href: "#pemateri", label: "Pemateri" },
