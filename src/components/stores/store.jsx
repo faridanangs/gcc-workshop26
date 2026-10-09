@@ -1,23 +1,16 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "framer-motion";
-import {
-  FiArrowUpRight,
-  FiAward,
-  FiMapPin,
-  FiTruck,
-  FiX,
-} from "react-icons/fi";
+import { FiArrowLeft, FiAward, FiMapPin, FiTruck, FiX } from "react-icons/fi";
 import { FaWhatsapp } from "react-icons/fa";
-import { Button } from "@/components/ui/button";
 import { products, sellers, sponsors, storeConfig } from "@/data/store";
 import { formatRupiah, getRatingStats } from "@/lib/store-utils";
 import { BackgroundBeams } from "../ui/background-beams";
 import { EncryptedText } from "../ui/encrypted-text";
 import { ProductCard } from "./product-card";
 import { ProductModal } from "./product-modal";
-import { SafeImage } from "./shared";
 
 const sponsorMap = Object.fromEntries(sponsors.map((s) => [s.id, s]));
 const sellerMap = Object.fromEntries(sellers.map((s) => [s.id, s]));
@@ -41,7 +34,7 @@ const fadeUp = {
   }),
 };
 
-// Baris info (gaya sama dengan baris tanggal/jam/lokasi di Hero)
+// Info singkat di header
 const metaItems = [
   {
     icon: FiMapPin,
@@ -53,11 +46,6 @@ const metaItems = [
   },
   { icon: FaWhatsapp, label: "Checkout via WhatsApp" },
 ];
-
-// 3 produk terlaris untuk kartu di sisi kanan header
-const featured = [...products].sort(sorters.popular).slice(0, 3);
-const cardPos = ["left-0 top-12", "right-0 top-0", "left-24 bottom-0"];
-const cardTilt = [-8, 6, -2];
 
 function Chip({ active, onClick, children }) {
   return (
@@ -96,71 +84,80 @@ export function Store() {
     setSponsorId("all");
   };
 
-  const pickSponsor = (id) => {
-    setSponsorId(id);
-    setCategory("Semua");
-    document
-      .getElementById("produk")
-      ?.scrollIntoView({ behavior: "smooth", block: "start" });
-  };
-
   return (
     <>
-      {/* Header: gaya sama dengan Hero */}
+      {/* Header */}
       <section
         id="top"
-        className="relative overflow-hidden bg-ink-900 pb-16 pt-10 text-cream-50 sm:pt-20 lg:pt-24 lg:pb-14"
+        className="relative overflow-hidden bg-ink-900 pb-14 pt-10 text-cream-50 sm:pt-20 lg:pb-16 lg:pt-10"
       >
-        <BackgroundBeams />
+        {/* <BackgroundBeams /> */}
         <div className="pointer-events-none absolute -left-32 -top-32 h-[420px] w-[420px] rounded-full bg-clay-500/30 blur-[110px]" />
         <div className="pointer-events-none absolute -right-24 top-40 h-[380px] w-[380px] rounded-full bg-amber-500/20 blur-[110px]" />
         <div className="grain-overlay pointer-events-none absolute inset-0 opacity-[0.06]" />
+        <div className="pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-clay-500/60 to-transparent" />
 
-        <div className="container relative grid gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
-          <div>
-            <motion.p
-              variants={fadeUp}
-              initial="hidden"
-              animate="show"
-              custom={0}
-              className="section-heading-eyebrow mb-6 inline-flex items-center gap-2.5 rounded-full border border-cream-50/15 bg-cream-50/5 px-4 py-2 text-xs"
+        <div className="container relative">
+          {/* Kembali ke home */}
+          <motion.div
+            variants={fadeUp}
+            initial="hidden"
+            animate="show"
+            custom={0}
+          >
+            <Link
+              href="/"
+              className="group inline-flex items-center gap-2 rounded-full border border-cream-50/20 bg-cream-50/10 py-2.5 pl-3.5 pr-5 font-body text-sm font-semibold text-cream-50 backdrop-blur transition hover:border-cream-50 hover:bg-cream-50 hover:text-ink-900"
             >
-              <span className="relative flex h-1.5 w-1.5">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75" />
-                <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-amber-400" />
-              </span>
-              <EncryptedText
-                text="GAMATIKA CODING CLUB"
-                encryptedClassName="text-white"
-                revealedClassName="dark:text-white text-amber-400"
-                revealDelayMs={100}
-                viewMargin="0px"
-              />
-            </motion.p>
+              <FiArrowLeft className="transition-transform group-hover:-translate-x-0.5" />
+              Kembali
+            </Link>
+          </motion.div>
 
+          <div className="mt-8 sm:mt-12">
             <motion.h1
               variants={fadeUp}
               initial="hidden"
               animate="show"
-              custom={1}
-              className="text-balance font-display text-3xl font-bold leading-[1.1] tracking-tight sm:text-4xl lg:text-[3rem]"
+              custom={2}
+              className="text-balance font-display text-5xl font-bold leading-[1.05] tracking-tight sm:text-6xl lg:text-7xl"
             >
-              Workshop Store:
+              Workshop{" "}
+              <span className="relative inline-block text-clay-500">
+                Store
+                <svg
+                  viewBox="0 0 200 14"
+                  className="absolute -bottom-2 left-0 w-full text-amber-500"
+                  preserveAspectRatio="none"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M2 10 Q 50 2 100 8 T 198 6"
+                    stroke="currentColor"
+                    strokeWidth="5"
+                    fill="none"
+                    strokeLinecap="round"
+                  />
+                </svg>
+              </span>
             </motion.h1>
 
-            <motion.div
+            <motion.ul
               variants={fadeUp}
               initial="hidden"
               animate="show"
               custom={4}
-              className="mt-10 flex flex-wrap gap-x-8 gap-y-3 border-t border-cream-50/10 pt-7 font-body text-sm text-cream-100/70"
+              className="mt-8 flex flex-wrap gap-2.5"
             >
               {metaItems.map(({ icon: Icon, label }) => (
-                <span key={label} className="inline-flex items-center gap-2">
-                  <Icon className="text-clay-500" /> {label}
-                </span>
+                <li
+                  key={label}
+                  className="inline-flex items-center gap-2 rounded-full border border-cream-50/10 bg-cream-50/5 px-3.5 py-2 font-body text-[13px] text-cream-100/80 sm:text-sm"
+                >
+                  <Icon className="shrink-0 text-amber-500" /> {label}
+                </li>
               ))}
-            </motion.div>
+            </motion.ul>
           </div>
         </div>
       </section>
@@ -233,45 +230,6 @@ export function Store() {
               </AnimatePresence>
             </div>
           )}
-
-          {/* Daftar sponsor */}
-          <div id="sponsor" className="mt-20 scroll-mt-24">
-            <h2 className="font-display text-2xl font-bold sm:text-3xl">
-              Sponsor yang berjualan
-            </h2>
-            <p className="mt-2 max-w-xl font-body text-sm text-ink-900/60">
-              Setiap sponsor workshop menjual produknya langsung di sini.
-            </p>
-            <ul className="mt-6 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {sponsors.map((s) => {
-                const n = products.filter((p) => p.sponsorId === s.id).length;
-                return (
-                  <li key={s.id}>
-                    <button
-                      type="button"
-                      onClick={() => pickSponsor(s.id)}
-                      className="flex h-full w-full items-start gap-4 rounded-2xl border border-ink-900/10 bg-white p-5 text-left transition hover:border-clay-500/60"
-                    >
-                      <span className="grid h-12 w-12 shrink-0 place-items-center rounded-xl bg-clay-500/10 text-clay-500">
-                        <FiAward size={22} />
-                      </span>
-                      <span>
-                        <span className="block font-display text-lg font-semibold">
-                          {s.name}
-                        </span>
-                        <span className="mt-0.5 block font-body text-sm text-ink-900/60">
-                          {s.tagline}
-                        </span>
-                        <span className="mt-2 block font-body text-xs font-semibold underline underline-offset-4">
-                          Lihat {n} produk
-                        </span>
-                      </span>
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
-          </div>
         </div>
       </section>
 

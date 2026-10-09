@@ -4,7 +4,7 @@ export const storeConfig = {
   pickupPoint: "FMIPA Mehibun",
   // Ongkir COD / QRIS: Rp1.000 per km, dihitung panitia lewat Google Maps
   // (rute dari lokasi panitia penjual ke lokasi pembeli, lihat jarak tempuhnya)
-  shippingPerKm: 1000,
+  shippingPerKm: 1500,
 };
 
 // Panitia yang memegang barang. Pesanan dikirim ke WhatsApp panitia yang memegang produknya.
@@ -39,7 +39,7 @@ export const deliveryMethods = [
 ];
 
 // ============================================================
-// DATA INDOSAT OOREDOO (IM3)
+// DATA INDOSAT OOREDOO (3)
 // Salin 2 objek di bawah ke data/store.js:
 //   1. indosatSponsor -> masukkan ke array `sponsors`
 //   2. indosatProduct -> masukkan ke array `products`
@@ -49,61 +49,61 @@ export const deliveryMethods = [
 export const indosatSponsor = {
   id: "indosat-ooredoo",
   name: "Indosat Ooredoo",
-  tagline: "Operator seluler, sponsor workshop dengan kartu perdana IM3.",
+  tagline: "Operator seluler, sponsor workshop dengan kartu perdana Tri(3).",
 };
 
 export const indosatProduct = {
-  id: "kartu-im3-3gb",
+  id: "kartu-tri-3gb",
   sponsorId: "indosat-ooredoo",
   sellerId: "anang", // TODO: ganti dengan id panitia yang memegang kartunya (lihat `sellers`)
-  name: "Kartu Perdana IM3 + Kuota 3GB",
+  name: "Kartu Perdana Tri(3) + Kuota 3GB",
   category: "Kartu Perdana",
   price: 25000,
   originalPrice: null,
   stock: 50, // TODO: isi jumlah kartu yang benar-benar tersedia
-  sold: 9,
-  images: ["/store/im3-1.jpg", "/store/im3-2.jpg"], // TODO: taruh foto di /public/store/
+  sold: 10,
+  images: [
+    "/stores/kartu3/kartu-3-1.jpeg",
+    "/stores/kartu3/kartu-3-2.jpeg",
+    "/stores/kartu3/kartu-3-3.jpeg",
+  ], // TODO: taruh foto di /public/store/
   description:
-    "Kartu perdana IM3 dari Indosat Ooredoo. Sudah termasuk kuota internet, bonus penyimpanan Google, dan langganan aplikasi hiburan.",
+    "Kartu perdana Tri(3) dari Indosat Ooredoo. Sudah termasuk kuota internet, dan langganan aplikasi hiburan.",
   features: [
-    "Kartu perdana IM3",
+    "Kartu perdana Tri(3)",
     "Kuota internet 3GB",
-    "Bonus penyimpanan Google 180GB",
-    "Langganan aplikasi: WeTV, Vidio, dan lainnya", // TODO: lengkapi daftar aplikasinya
-    // TODO (opsional): tambahkan masa aktif kuota & masa berlaku bonus/langganan
+    "Langganan aplikasi peremium: (Viu/WeTv/IQiY) Selama 1 Bulan",
   ],
   reviews: [
     {
-      id: "r1",
-      name: "Rizky Pratama",
+      id: "hata",
+      name: "Hata",
       rating: 5,
-      date: "2026-09-21",
+      date: "9 oktober 2026",
       comment:
-        "Aromanya wangi banget pas dibuka. Cocok buat begadang ngerjain tugas ML, rasanya halus nggak terlalu asam.",
-      images: ["/store/reviews/kopi-r1-1.jpg", "/store/reviews/kopi-r1-2.jpg"],
+        "Sumpah kartunya bagus banget, gak nyesel kalian beli disini guys, kuotanya lumayanlah sepadan dengan harga, dan yang paling bagus ini bisa dapet premium buat nonton drama korea di Viu. Mantap!",
+      images: ["/stores/kartu3/review-1.jpeg", "/stores/kartu3/review-2.jpeg"],
     },
     {
       id: "r2",
       name: "Nadia Safitri",
       rating: 5,
-      date: "2026-09-18",
-      comment: "Packing rapi, kopinya masih fresh. Bakal repeat order.",
-      images: ["/store/reviews/kopi-r2-1.jpg"],
+      date: "28 September 2026",
+      comment: "Sumpah gokil sih ini kartu, cuman 25k doang udah bisa dapet yang 5G, mana udah nyaman banget pake kartu 3, langsung dah kubeli dua saking bagusnya, rekomendasi banget buat kalian yang mau beli kartu perdana + 5G + dapet bonus, langsung aja beli disini.",
+      images: ["/stores/kartu3/review-3.jpeg"],
     },
     {
       id: "r3",
       name: "Ahmad Fauzan",
       rating: 4,
-      date: "2026-09-12",
+      date: "1 Oktober 2026",
       comment:
-        "Rasanya enak, cuma gilingan bubuknya agak kasar buat espresso. Kalau tubruk pas.",
+        "Gimana yaa, intinya bagus dah kartunya.",
       images: [],
     },
   ],
 };
 
-
 export const sponsors = [{ ...indosatSponsor }];
 
 export const products = [{ ...indosatProduct }];
-

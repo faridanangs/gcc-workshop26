@@ -184,7 +184,7 @@ export function Reviews({ reviews, onOpenImages }) {
                     <div className="flex flex-wrap items-center justify-between gap-x-3">
                       <p className="font-body text-sm font-semibold">{r.name}</p>
                       <time dateTime={r.date} className="font-body text-xs text-ink-900/50">
-                        {formatDate(r.date)}
+                        {r.date}
                       </time>
                     </div>
                     <StarRating value={r.rating} size={14} />

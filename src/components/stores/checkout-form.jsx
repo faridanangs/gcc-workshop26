@@ -287,7 +287,7 @@ export function CheckoutForm({
             type="submit"
             className="inline-flex flex-1 items-center justify-center gap-2 rounded-full bg-clay-500 px-5 py-3.5 font-body text-[15px] font-bold text-white transition hover:brightness-110 active:scale-[0.99] sm:gap-2.5 sm:py-4 sm:text-base"
           >
-            <FaWhatsapp size={19} /> Pesan via WhatsApp
+            <FaWhatsapp size={19} /> Checkout
           </button>
         </div>
       </div>
