@@ -1,10 +1,10 @@
 export const storeConfig = {
   title: "Workshop Store",
   // Titik ambil barang untuk metode "Ambil di FMIPA"
-  pickupPoint: "FMIPA Mehibun",
+  pickupPoint: "FMIPA Unram (mehibun) ",
   // Ongkir COD / QRIS: Rp1.000 per km, dihitung panitia lewat Google Maps
   // (rute dari lokasi panitia penjual ke lokasi pembeli, lihat jarak tempuhnya)
-  shippingPerKm: 1500,
+  shippingPerKm: 1000,
 };
 
 // Panitia yang memegang barang. Pesanan dikirim ke WhatsApp panitia yang memegang produknya.
@@ -17,9 +17,9 @@ export const sellers = [
 export const deliveryMethods = [
   {
     id: "pickup",
-    label: "Ambil di FMIPA",
-    desc: "Ambil langsung di FMIPA, tanpa ongkir.",
-    waLabel: "Ambil langsung di FMIPA",
+    label: "Ambil di FMIPA Unram (mehibun)",
+    desc: "Ambil langsung di FMIPA Unram (mehibun), tanpa ongkir.",
+    waLabel: "Ambil langsung di FMIPA Unram (mehibun) ",
     delivery: false,
   },
   {
