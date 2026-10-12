@@ -30,10 +30,9 @@ export function buildWhatsAppUrl({ product, sponsor, seller, qty, method, name, 
   const subtotal = product.price * qty;
 
   const lines = [
-    `Halo kak, aku mau pesan dari GCC ${storeConfig.title} `,
+    `Halo kak, aku mau pesan`,
     "",
     `*Produk:* ${product.name}`,
-    `*Sponsor:* ${sponsor.name}`,
     `*Jumlah:* ${qty} x ${formatRupiah(product.price)}`,
     `*Subtotal:* ${formatRupiah(subtotal)}`,
     "",
