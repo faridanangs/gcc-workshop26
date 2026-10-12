@@ -12,6 +12,7 @@ export const storeConfig = {
 export const sellers = [
   { id: "anang", name: "Anangs", whatsapp: "6285119697871" },
   { id: "agus", name: "Agus", whatsapp: "6281234567893" },
+  { id: "dinda", name: "Dinda", whatsapp: "6283117141366" }, 
 ];
 
 export const deliveryMethods = [
@@ -55,7 +56,7 @@ export const indosatSponsor = {
 export const indosatProduct = {
   id: "kartu-tri-3gb",
   sponsorId: "indosat-ooredoo",
-  sellerId: "anang", // TODO: ganti dengan id panitia yang memegang kartunya (lihat `sellers`)
+  sellerId: "dinda", // TODO: ganti dengan id panitia yang memegang kartunya (lihat `sellers`)
   name: "Kartu Perdana Tri(3) + Kuota 3GB",
   category: "Kartu Perdana",
   price: 25000,
